@@ -2,63 +2,149 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio – Omer JAVAID</title>
-  <!-- Fonts & Icons -->
+
+  <!-- Google Fonts & Icônes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <!-- AOS / VanillaTilt -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- AOS & Leaflet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-sA+e2H1bpkjgi1Jr3evvRKPmZsLF96Z1xXv/DaD+aZU=" crossorigin=""/>
 
-  <!-- Custom spices -->
+  <!-- ========== CSS ========== -->
   <style>
-    :root{--primary:#007bff;--card-bg:#fff;--dark-bg:#121212;--dark-text:#e6e6e6;}
-    body.dark{background:var(--dark-bg);color:var(--dark-text);}body.dark header{background:rgba(18,18,18,.9);}body.dark .cert-block,body.dark .skill-block,body.dark .loc-card{background:#1e1e1e;color:var(--dark-text);}body.dark .bubble{background:#1e1e1e;}
-    /* Hero */
-    .hero-section{height:100vh;background:url('assets/hero.jpg') center/cover fixed no-repeat;}
-    .typed-cursor{display:inline-block;width:.1em;background:currentColor;animation:blink .7s steps(1) infinite;}@keyframes blink{50%{background:transparent;}}
-    #themeToggle{background:none;border:none;color:var(--primary);font-size:1.3rem;cursor:pointer;}#themeToggle:hover{transform:rotate(20deg);} .navbar{gap:1rem;}
-    /* Certifications */
-    .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;}
-    .cert-block{background:var(--card-bg);border-radius:10px;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;transition:transform .3s ease;} .cert-block:hover{transform:translateY(-4px);} .cert-block img{width:64px;height:64px;object-fit:contain;}
-    /* Localisation cards */
-    .loc-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;max-width:1200px;margin:0 auto;}
-    .loc-card{width:260px;height:180px;background:var(--card-bg);border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);perspective:1000px;cursor:pointer;} .loc-inner{width:100%;height:100%;position:relative;transition:transform .7s;transform-style:preserve-3d;} .loc-card:hover .loc-inner{transform:rotateY(180deg);} .loc-face{position:absolute;width:100%;height:100%;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;gap:.5rem;} .loc-face.front{background:var(--primary);color:#fff;} .loc-face.back{background:var(--card-bg);color:var(--text);transform:rotateY(180deg);} .loc-face i{font-size:2.2rem;}
-    /* Timeline */
-    .timeline{position:relative;margin:4rem 0;} .timeline::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:100%;background:var(--primary);} .t-item{position:relative;width:50%;padding:1rem 2rem;margin:2rem 0;} .t-item:nth-child(odd){left:0;text-align:right;} .t-item:nth-child(even){left:50%;} .bubble{background:var(--card-bg);padding:1rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);} .bubble img{width:48px;height:48px;margin-bottom:.5rem;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1));}
-    @media(max-width:768px){.t-item,.t-item:nth-child(even){left:0;width:100%;text-align:left;}}
+:root{
+  --primary:#007bff;
+  --bg-light:#f4f4f4;
+  --card-bg:#ffffff;
+  --text:#333;
+  --dark-bg:#121212;
+  --dark-text:#e6e6e6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Poppins',sans-serif;background:var(--bg-light);color:var(--text);
+     line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s;}
+body.dark{background:var(--dark-bg);color:var(--dark-text);}
+
+header{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);
+       box-shadow:0 2px 5px rgba(0,0,0,.1);z-index:1000;}
+body.dark header{background:rgba(18,18,18,.9);}
+.navbar{max-width:1200px;margin:auto;padding:1rem;display:flex;align-items:center;gap:1rem;
+        justify-content:space-between;}
+.logo{font-size:1.5rem;font-weight:700;color:var(--primary);}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:inherit;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:var(--primary);}
+#themeToggle{background:none;border:none;color:var(--primary);font-size:1.3rem;cursor:pointer;
+             transition:transform .3s;}
+#themeToggle:hover{transform:rotate(20deg);}
+
+.hero-section{height:100vh;display:flex;align-items:center;justify-content:center;
+              background:url('assets/hero.jpg') center/cover fixed no-repeat;position:relative;}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);}
+.hero-content{position:relative;color:#fff;text-align:center;padding:2rem;max-width:700px;}
+.hero-content h1{font-size:2.8rem;margin-bottom:1rem;}
+.hero-content p{font-size:1.15rem;margin-bottom:2rem;}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;}
+.btn-primary,.btn-secondary{padding:.8rem 1.6rem;border-radius:6px;font-weight:600;
+                            text-decoration:none;transition:.3s;}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:#0056b3;}
+.btn-secondary{border:2px solid var(--primary);color:var(--primary);background:#fff;}
+.btn-secondary:hover{background:var(--primary);color:#fff;}
+
+section{padding:4rem 2rem;}
+h2{text-align:center;margin-bottom:2rem;font-size:2rem;}
+
+.profile-section{padding-top:7rem;}
+.profile-container{display:flex;flex-wrap:wrap;gap:2rem;max-width:1200px;margin:auto;}
+.profile-image img{width:280px;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,.1);}
+.profile-details{flex:1;min-width:300px;}
+.profile-infos{list-style:none;margin-top:1rem;}
+.profile-infos li{margin-bottom:.4rem;}
+
+.edu-container{display:flex;flex-direction:column;gap:2rem;max-width:1200px;margin:auto;}
+.edu-block{background:var(--card-bg);padding:1.5rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);}
+body.dark .edu-block{background:#1e1e1e;color:var(--dark-text);}
+.edu-block h3{color:var(--primary);}
+.edu-block .dates{font-style:italic;font-size:.9rem;color:#666;margin-bottom:.6rem;}
+
+#map{width:100%;height:400px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);margin-top:2rem;}
+
+.lang-list{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;max-width:600px;margin:auto;}
+.lang-tag{background:var(--primary);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.9rem;}
+
+.skills-section{max-width:1200px;margin:auto;}
+.filter-btns{text-align:center;margin-bottom:2rem;}
+.filter-btns button{padding:.6rem 1.2rem;border-radius:6px;border:1px solid var(--primary);
+                    background:none;color:var(--primary);margin:.2rem;cursor:pointer;transition:.3s;}
+.filter-btns button.active,.filter-btns button:hover{background:var(--primary);color:#fff;}
+.skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+.skill-block{background:var(--card-bg);padding:1.5rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+body.dark .skill-block{background:#1e1e1e;color:var(--dark-text);}
+.skill-block h3{color:var(--primary);margin-bottom:.8rem;font-size:1.1rem;}
+
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1200px;margin:auto;}
+.cert-block{background:var(--card-bg);padding:1.2rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);
+            display:flex;flex-direction:column;align-items:center;text-align:center;gap:.6rem;transition:.3s;}
+.cert-block:hover{transform:translateY(-4px);}
+.cert-block img{width:64px;height:64px;object-fit:contain;}
+
+.experience-section{max-width:1200px;margin:auto;}
+.timeline{position:relative;margin-top:3rem;}
+.timeline::before{content:\"\";position:absolute;left:50%;transform:translateX(-50%);top:0;width:4px;height:100%;background:var(--primary);}
+.t-item{position:relative;width:50%;padding:1rem 2rem;margin:2.5rem 0;}
+.t-item:nth-child(odd){left:0;text-align:right;}
+.t-item:nth-child(even){left:50%;}
+.bubble{background:var(--card-bg);padding:1.5rem;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.06);max-width:420px;display:inline-block;}
+body.dark .bubble{background:#1e1e1e;color:var(--dark-text);}
+.bubble h3{color:var(--primary);margin-bottom:.4rem;font-size:1.1rem;}
+.bubble .dates{font-size:.85rem;font-style:italic;color:#555;margin-bottom:.4rem;}
+.bubble img{width:48px;height:48px;margin-bottom:.6rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1));}
+@media(max-width:768px){.t-item,.t-item:nth-child(even){left:0;width:100%;text-align:left;}.timeline::before{left:12px;transform:none;}}
+
+.contact-section{background:#fafafa;}
+.contact-intro{text-align:center;margin-bottom:1.5rem;}
+.contact-container{display:flex;flex-wrap:wrap;gap:2rem;max-width:1200px;margin:auto;justify-content:center;}
+.contact-infos{flex:1;min-width:260px;max-width:400px;}
+.contact-form{flex:1;min-width:300px;max-width:500px;display:flex;flex-direction:column;}
+.contact-form input,.contact-form textarea{padding:.8rem;border:1px solid #ccc;border-radius:6px;font:inherit;margin-bottom:1rem;}
+.contact-form button{align-self:flex-start;background:var(--primary);color:#fff;padding:.8rem 1.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;}
+.contact-form button:hover{background:#0056b3;}
+
+.footer{padding:1.5rem;text-align:center;background:var(--primary);color:#fff;}
+
+[data-aos]{opacity:0;transition:opacity .8s,transform .8s;}
+[data-aos].aos-animate{opacity:1;}
   </style>
 </head>
+
 <body>
-  <!-- NAVBAR -->
+  <!-- ======= NAVBAR ======= -->
   <header>
     <nav class="navbar">
       <div class="logo">Omer&nbsp;JAVAID</div>
       <ul class="nav-links">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#profil">Profil</a></li>
-        <li><a href="#formation">Formation</a></li>
-        <li><a href="#langues">Langues</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#experiences">Expériences</a></li>
-        <li><a href="#localisations">Localisations</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#accueil">Accueil</a></li><li><a href="#profil">Profil</a></li>
+        <li><a href="#formation">Formation</a></li><li><a href="#langues">Langues</a></li>
+        <li><a href="#competences">Compétences</a></li><li><a href="#certifications">Certifications</a></li>
+        <li><a href="#experiences">Expériences</a></li><li><a href="#contact">Contact</a></li>
       </ul>
       <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- ======= HERO ======= -->
   <section id="accueil" class="hero-section" data-aos="fade-up">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1><span id="typed"></span><span class="typed-cursor"></span></h1>
-      <p>Étudiant ingénieur ESIEA • Cybersécurité &amp; Cloud</p>
+      <p>Étudiant ingénieur ESIEA • Cybersécurité&nbsp;&amp;&nbsp;Cloud</p>
       <div class="hero-buttons">
         <a href="#profil" class="btn-primary">Découvrir mon profil</a>
         <a href="CV_JAVAID-Omer.pdf" class="btn-secondary" target="_blank">CV&nbsp;FR</a>
@@ -67,130 +153,269 @@
     </div>
   </section>
 
-  <!-- PROFILE -->
+  <!-- ======= PROFILE ======= -->
   <section id="profil" class="profile-section" data-aos="fade-up">
     <div class="profile-container">
-      <div class="profile-image"><img src="photocv.jpg" alt="Photo"></div>
+      <div class="profile-image">
+        <img src="photocv.jpg" alt="Photo de profil" loading="lazy">
+      </div>
       <div class="profile-details">
         <h2>À propos</h2>
-        <p>Cycle ingénieur <strong>ESIEA</strong> (Paris) après un BUT Réseaux &amp; Télécoms. Passionné par la <strong>cybersécurité</strong>, l’<strong>analyse de données</strong> et le <strong>cloud</strong>. Je recherche une alternance 3&nbsp;ans pour relever des défis SI.</p>
+        <p>Cycle ingénieur <strong>ESIEA</strong> (Paris) après un BUT R&T. Passionné de <strong>cybersécurité</strong>,
+           <strong>cloud</strong> &amp; <strong>data</strong>. Je recherche une alternance 3&nbsp;ans pour relever des défis SI.</p>
         <ul class="profile-infos">
           <li><strong>Âge :</strong> 20&nbsp;ans</li>
           <li><strong>Localisation :</strong> Champigny-sur-Marne (94)</li>
-          <li><strong>Tél :</strong> +33&nbsp;6&nbsp;64&nbsp;40&nbsp;17&nbsp;46</li>
+          <li><strong>Tél :</strong> +33 6 64 40 17 46</li>
           <li><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="formation" data-aos="fade-up" style="padding:4rem 2rem;">
-    <h2 style="text-align:center;margin-bottom:2rem;">Formation</h2>
+  <!-- ======= FORMATION + MAP ======= -->
+  <section id="formation" data-aos="fade-up">
+    <h2>Formation &amp; Lieux clés</h2>
     <div class="edu-container">
-      <div class="edu-block" data-aos="fade-right"><h3>ESIEA – École d’ingénieurs du numérique</h3><p class="dates">2025 – 2028</p><p>Cycle ingénieur – Majeure Sécurité SI</p></div>
-      <div class="edu-block" data-aos="fade-left"><h3>UPEC, IUT Créteil-Vitry</h3><p class="dates">2023 – 2025</p><p>BUT Réseaux &amp; Télécoms – Cybersécurité</p><ul style="margin-top:.8rem;list-style:disc inside;"><li>Projets : e‑commerce PHP/SQL, maquette réseau GNS3, chat chiffré Java, transmission LoRa SDR.</li></ul></div>
-      <div class="edu-block" data-aos="fade-right"><h3>Lycée Langevin Wallon</h3><p class="dates">2020 – 2023</p><p>Bac Général – Maths &amp; Sciences de l’Ingénieur</p></div>
+      <div class="edu-block" data-aos="fade-right">
+        <h3>ESIEA – École d’ingénieurs du numérique</h3>
+        <p class="dates">2025&nbsp;– 2028 • Majeure Sécurité&nbsp;SI</p>
+      </div>
+
+      <div class="edu-block" data-aos="fade-left">
+        <h3>IUT R&T – UPEC Créteil-Vitry</h3>
+        <p class="dates">2023&nbsp;– 2025 • BUT Réseaux &amp; Télécoms (Cyber)</p>
+        <ul style="list-style:disc inside;margin-top:.6rem">
+          <li>Site e-commerce sécurisé (PHP / SQL / Stripe)</li>
+          <li>Infrastructure réseau multi-site (GNS3 + IPSec)</li>
+          <li>Chat chiffré (Java / JDBC / TLS)</li>
+          <li>Système LoRa SDR • Flask realtime</li>
+        </ul>
+      </div>
+
+      <div class="edu-block" data-aos="fade-right">
+        <h3>Lycée Langevin Wallon</h3>
+        <p class="dates">2020&nbsp;– 2023 • Bac Général Maths / SI</p>
+      </div>
+    </div>
+
+    <div id="map" data-aos="zoom-in"></div>
+  </section>
+
+  <!-- ======= LANGUES ======= -->
+  <section id="langues" data-aos="fade-up">
+    <h2>Langues</h2>
+    <div class="lang-list">
+      <span class="lang-tag">Français – C2</span><span class="lang-tag">Anglais – B2</span>
+      <span class="lang-tag">Urdu – C2</span><span class="lang-tag">Espagnol – A2</span>
+      <span class="lang-tag">Hindi – A2</span>
     </div>
   </section>
 
-  <!-- LANGUAGES -->
-  <section id="langues" data-aos="fade-up" style="padding:4rem 2rem;background:#fefefe;">
-    <h2 style="text-align:center;margin-bottom:1.5rem;">Langues</h2>
-    <div class="lang-list"><span class="lang-tag">Français – C2</span><span class="lang-tag">Anglais – B2</span><span class="lang-tag">Urdu – C2</span><span class="lang-tag">Espagnol – A2</span><span class="lang-tag">Hindi – A2</span></div>
-  </section>
-
-  <!-- SKILLS -->
+  <!-- ======= COMPÉTENCES ======= -->
   <section id="competences" class="skills-section" data-aos="fade-up">
     <h2>Compétences</h2>
-    <div class="filter-btns"><button class="active" data-filter="all">Toutes</button><button data-filter="reseau">Réseaux</button><button data-filter="dev">Développement</button><button data-filter="cloud">Cloud &amp; Virtualisation</button><button data-filter="data">Data / BI</button></div>
+    <div class="filter-btns">
+      <button class="active" data-filter="all">Toutes</button>
+      <button data-filter="reseau">Réseaux</button>
+      <button data-filter="dev">Développement</button>
+      <button data-filter="cloud">Cloud</button>
+      <button data-filter="data">Data/BI</button>
+      <button data-filter="gestion">Gestion</button>
+    </div>
+
     <div class="skills-container" id="skillsGrid">
-      <div class="skill-block reseau"><h3>Réseaux &amp; Sécurité</h3><ul><li>TCP/IP, OSPF, BGP, VLAN, MPLS, VPN/IPsec</li><li>Fortigate, Cisco ASA, IDS/IPS</li><li>Wireshark, GNS3, Packet Tracer</li></ul></div>
-      <div class="skill-block dev"><h3>Développement</h3><ul><li>Python (Flask, Pandas)</li><li>Java (Swing, JDBC)</li><li>React, PHP</li><li>SQL : MySQL, PostgreSQL</li></ul></div>
-      <div class="skill-block cloud"><h3>Cloud &amp; Virtualisation</h3><ul><li>AWS (IAM, EC2, VPC)</li><li>Docker, VMware</li><li>Linux, Windows Server</li></ul></div>
-      <div class="skill-block data"><h3>Data &amp; BI</h3><ul><li>Power BI (DAX, rapports)</li><li>Excel (TCD, VBA)</li><li>ETL basique (Talend, Python)</li></ul></div>
-      <div class="skill-block dev cloud data"><h3>Gestion de projet</h3><ul><li>Agile/Scrum, Kanban</li><li>Jira, Trello, Confluence</li><li>Soft skills : communication, créativité</li></ul></div>
+      <div class="skill-block reseau">
+        <h3>Réseaux &amp; Sécurité</h3>
+        <ul><li>TCP/IP • OSPF • BGP • MPLS • IPsec/VPN</li>
+            <li>Fortigate • Cisco ASA • ACL • IDS / IPS</li>
+            <li>HSRP • QoS • Wireshark • GNS3</li></ul>
+      </div>
+
+      <div class="skill-block dev">
+        <h3>Développement full-stack</h3>
+        <ul><li>Python (Flask / Pandas)</li><li>Java (Swing / JDBC)</li>
+            <li>React • PHP • REST API</li><li>SQL : MySQL / PostgreSQL</li></ul>
+      </div>
+
+      <div class="skill-block cloud">
+        <h3>Cloud &amp; Virtualisation</h3>
+        <ul><li>AWS (IAM • EC2 • VPC)</li><li>Docker • CI/CD GitHub Actions</li>
+            <li>VMware • VirtualBox</li></ul>
+      </div>
+
+      <div class="skill-block data">
+        <h3>Data / Business Intelligence</h3>
+        <ul><li>Power BI (DAX, rapports)</li><li>Excel avancé (TCD, VBA)</li>
+            <li>ETL Talend • scripts Python</li></ul>
+      </div>
+
+      <div class="skill-block gestion">
+        <h3>Gestion de projet</h3>
+        <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li>
+            <li>Communication &amp; leadership</li></ul>
+      </div>
     </div>
   </section>
 
-  <!-- CERTIFICATIONS -->
+  <!-- ======= CERTIFICATIONS ======= -->
   <section id="certifications" class="certifications-section" data-aos="fade-up">
     <h2>Certifications</h2>
     <div class="certs-grid">
-      <a class="cert-block" href="assets/certs/aws.png" target="_blank"><img src="assets/certs/aws.png" alt="AWS"><h3>AWS Fundamentals</h3><p>2025</p></a>
-      <a class="cert-block" href="assets/certs/google.png" target="_blank"><img src="assets/certs/google.png" alt="Google"><h3>Google Cybersecurity</h3><p>2025</p></a>
-      <a class="cert-block" href="https://www.credly.com/badges/bbf2976e-eb9a-4c77-8a56-0ce7bc0be392" target="_blank"><h3>CCNA v7 ITN</h3><p>2024</p></a>
-      <a class="cert-block" href="https://www.credly.com/badges/491acd4a-a560-4610-8e22-1d479135de7c" target="_blank"><h3>CCNA v7 SRWE</h3><p>2024</p></a>
+      <a class="cert-block" href="assets/certs/aws.png" target="_blank">
+        <img src="assets/certs/aws.png" alt="AWS" loading="lazy"><h3>AWS Fundamentals</h3><p>2025</p>
+      </a>
+      <a class="cert-block" href="assets/certs/google.png" target="_blank">
+        <img src="assets/certs/google.png" alt="Google" loading="lazy"><h3>Google Cybersecurity</h3><p>2025</p>
+      </a>
+      <a class="cert-block" href="https://www.credly.com/badges/bbf2976e-eb9a-4c77-8a56-0ce7bc0be392" target="_blank">
+        <h3>CCNA v7 ITN</h3><p>2024</p>
+      </a>
+      <a class="cert-block" href="https://www.credly.com/badges/491acd4a-a560-4610-8e22-1d479135de7c" target="_blank">
+        <h3>CCNA v7 SRWE</h3><p>2024</p>
+      </a>
       <div class="cert-block"><h3>CCNA v7 ENSA</h3><p>2025</p></div>
-      <a class="cert-block" href="assets/certs/ibm.png" target="_blank"><img src="assets/certs/ibm.png" alt="IBM"><h3>IBM Intro Cyber</h3><p>2025</p></a>
+      <a class="cert-block" href="assets/certs/ibm.png" target="_blank">
+        <img src="assets/certs/ibm.png" alt="IBM" loading="lazy"><h3>IBM Intro Cyber</h3><p>2025</p>
+      </a>
       <div class="cert-block"><h3>SecNumAcadémie (ANSSI)</h3><p>2024</p></div>
-      <div class="cert-block"><h3>Root‑Me – 1300 pts</h3><p>2024</p></div>
-      <a class="cert-block" href="assets/certs/pix.png" target="_blank"><img src="assets/certs/pix.png" alt="Pix"><h3>Certification Pix</h3><p>2023</p></a>
-      <a class="cert-block" href="assets/certs/bafa.png" target="_blank"><img src="assets/certs/bafa.png" alt="BAFA"><h3>BAFA</h3><p>2022</p></a>
+      <div class="cert-block"><h3>Root-Me — 1300 pts</h3><p>2024</p></div>
+      <a class="cert-block" href="assets/certs/pix.png" target="_blank">
+        <img src="assets/certs/pix.png" alt="Pix" loading="lazy"><h3>Certification Pix</h3><p>2023</p>
+      </a>
+      <a class="cert-block" href="assets/certs/bafa.png" target="_blank">
+        <img src="assets/certs/bafa.png" alt="BAFA" loading="lazy"><h3>BAFA</h3><p>2022</p>
+      </a>
     </div>
   </section>
 
-  <!-- EXPERIENCES -->
+  <!-- ======= EXPÉRIENCES ======= -->
   <section id="experiences" class="experience-section" data-aos="fade-up">
     <h2>Expériences Professionnelles</h2>
     <div class="timeline">
-      <div class="t-item" data-aos="fade-right"><div class="bubble"><img src="assets/companies/sofiadis.png" alt="Sofiadis"><h3>Pentest Web – Sofiadis</h3><p class="dates">2025</p><ul><li>10 000 requêtes HTTP analysées</li><li>30+ vulnérabilités trouvées</li></ul></div></div>
-      <div class="t-item" data-aos="fade-left"><div class="bubble"><img src="assets/companies/basicfit.png" alt="Basic Fit"><h3>Réceptionniste – Basic Fit</h3><p class="dates">2024</p><ul><li>Accueil &amp; accompagnement</li><li>Procédures sécurité</li></ul></div></div>
-      <div class="t-item" data-aos="fade-right"><div class="bubble"><img src="assets/companies/mairie_champigny.png" alt="Mairie"><h3>Assistant administratif – Mairie</h3><p class="dates">2023</p><ul><li>Accueil public &amp; téléphone</li><li>Logistique événements</li></ul></div></div>
-      <div class="t-item" data-aos="fade-left"><div class="bubble"><img src="assets/companies/simon_veil.png" alt="Centre Loisir"><h3>Animateur – Centre de loisirs</h3><p class="dates">2022</p><ul><li>Encadrement enfants 6‑12 ans</li></ul></div></div>
-      <div class="t-item" data-aos="fade-right"><div class="bubble"><img src="assets/companies/inventive.png" alt="Inventive"><h3>Stagiaire IT – Inventive Informatique</h3><p class="dates">2020‑2021</p><ul><li>Installation postes &amp; réseau</li></ul></div></div>
+      <div class="t-item" data-aos="fade-right">
+        <div class="bubble">
+          <img src="assets/companies/sofiadis.png" alt="Sofiadis" loading="lazy">
+          <h3>Pentest Web – Sofiadis</h3>
+          <p class="dates">Avril 2025 – Juin 2025</p>
+          <ul><li>10 000+ requêtes HTTP analysées</li><li>Rapport 20 pages • 30+ vulnérabilités</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-left">
+        <div class="bubble">
+          <img src="assets/companies/basicfit.png" alt="Basic Fit" loading="lazy">
+          <h3>Réceptionniste – Basic Fit</h3>
+          <p class="dates">Juin 2024 – Juil. 2024</p>
+          <ul><li>Accueil &amp; accompagnement adhérents</li><li>Gestion réclamations &amp; sécurité</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-right">
+        <div class="bubble">
+          <img src="assets/companies/mairie_champigny.png" alt="Mairie" loading="lazy">
+          <h3>Assistant admin – Mairie de Champigny</h3>
+          <p class="dates">Sept. 2023 – Fév. 2023</p>
+          <ul><li>Accueil public &amp; téléphone</li><li>Logistique événements</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-left">
+        <div class="bubble">
+          <img src="assets/companies/simon_veil.png" alt="Centre loisirs" loading="lazy">
+          <h3>Animateur – Centre de loisirs</h3>
+          <p class="dates">Juil. 2022 – Août 2022</p>
+          <ul><li>Encadrement enfants 6-12 ans</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-right">
+        <div class="bubble">
+          <img src="assets/companies/inventive.png" alt="Inventive" loading="lazy">
+          <h3>Stagiaire IT – Inventive Informatique</h3>
+          <p class="dates">Déc. 2020 – Janv. 2021</p>
+          <ul><li>Installation postes &amp; réseau</li></ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- LOCALISATIONS -->
-  <section id="localisations" data-aos="fade-up" style="padding:4rem 2rem;background:#fefefe;">
-    <h2 style="text-align:center;margin-bottom:2rem;">Mes lieux clés</h2>
-    <div class="loc-wrap">
-      <div class="loc-card" data-tilt>
-        <div class="loc-inner">
-          <div class="loc-face front"><i class="fa-solid fa-school"></i><h3>ESIEA – Paris</h3></div>
-          <div class="loc-face back"><p>9 Rue Vésale, 75005 Paris</p><a href="https://goo.gl/maps/dGJb" target="_blank" class="btn-secondary" style="margin-top:.5rem;">Maps</a></div>
-        </div>
-      </div>
-      <div class="loc-card" data-tilt>
-        <div class="loc-inner">
-          <div class="loc-face front"><i class="fa-solid fa-network-wired"></i><h3>IUT&nbsp;R&T – Vitry</h3></div>
-          <div class="loc-face back"><p>61 Av. du Général de Gaulle, Vitry‑sur‑Seine</p><a href="https://goo.gl/maps/3yqx" target="_blank" class="btn-secondary" style="margin-top:.5rem;">Maps</a></div>
-        </div>
-      </div>
-      <div class="loc-card" data-tilt>
-        <div class="loc-inner">
-          <div class="loc-face front"><i class="fa-solid fa-house"></i><h3>Champigny‑sur‑Marne</h3></div>
-          <div class="loc-face back"><p>Ville natale &amp; actuelle</p><a href="https://goo.gl/maps/vMMS" target="_blank" class="btn-secondary" style="margin-top:.5rem;">Maps</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
+  <!-- ======= CONTACT ======= -->
   <section id="contact" class="contact-section" data-aos="fade-up">
     <h2>Contact</h2>
-    <p class="contact-intro">Un projet ? Une opportunité ? Parlons‑en !</p>
+    <p class="contact-intro">Un projet&nbsp;? Une opportunité&nbsp;? Parlons-en !</p>
     <div class="contact-container">
-      <div class="contact-infos"><p><strong>Localisation :</strong> Champigny‑sur‑Marne</p><p><strong>Tél :</strong> +33 6 64 40 17 46</p><p><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></p><p><strong>GitLab :</strong> <a href="https://gitlab.com/YourGitLabUsername" target="_blank">Mes projets</a></p><p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/omer-javaid-3b1787285/" target="_blank">Profil LinkedIn</a></p></div>
-      <form class="contact-form" method="POST" action="mailto:omerjavaid2304@outlook.fr" enctype="text/plain"><label for="nom">Nom :</label><input type="text" id="nom" name="nom" required><label for="courriel">Email :</label><input type="email" id="courriel" name="courriel" required><label for="message">Message :</label><textarea id="message" name="message" rows="5" required></textarea><button type="submit" class="btn-primary">Envoyer</button></form>
+      <div class="contact-infos">
+        <p><strong>Localisation :</strong> Champigny-sur-Marne</p>
+        <p><strong>Tél :</strong> +33 6 64 40 17 46</p>
+        <p><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></p>
+        <p><strong>GitLab :</strong> <a href="https://gitlab.com/YourGitLabUsername" target="_blank">Mes projets</a></p>
+        <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/omer-javaid-3b1787285/" target="_blank">Profil</a></p>
+      </div>
+
+      <form class="contact-form" method="POST" action="mailto:omerjavaid2304@outlook.fr" enctype="text/plain">
+        <label for="nom">Nom :</label>
+        <input id="nom" name="nom" required>
+        <label for="courriel">Email :</label>
+        <input id="courriel" name="courriel" type="email" required>
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button class="btn-primary" type="submit">Envoyer</button>
+      </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer"><p>&copy; 2025 – Omer JAVAID. Tous droits réservés.</p></footer>
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    © 2025 – Omer JAVAID
+  </footer>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-  <script>
-    AOS.init({once:true,duration:800});
-    // typed effect
-    const words=["Réseaux","Cybersécurité","Cloud","Data","Innovation"],typed=document.getElementById('typed');let i=0,j=0,del=false;function loop(){typed.textContent=words[i].substring(0,j);if(!del&&j++===words[i].length){del=true;setTimeout(loop,1200);return}if(del&&j--===0){del=false;i=(i+1)%words.length;}setTimeout(loop,del?60:120);}loop();
-    // theme toggle
-    const toggle=document.getElementById('themeToggle');toggle.addEventListener('click',()=>{document.body.classList.toggle('dark');toggle.innerHTML=document.body.classList.contains('dark')?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';});
-    // skill filter
-    document.querySelectorAll('.filter-btns button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btns button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.skill-block').forEach(b=>{b.style.display=(f==='all'||b.classList.contains(f))?'block':'none';});}));
+  <!-- ========== SCRIPTS ========== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-vA01xN1JxPjd2FSTkMqVuvyJrD+2tu2jL6XP1L+ZlgE=" crossorigin="" defer></script>
+
+  <script defer>
+/* ----- AOS init ----- */
+document.addEventListener('DOMContentLoaded',()=>AOS.init({once:true,duration:800}));
+
+/* ----- Typed effect ----- */
+const words=["Réseaux","Cybersécurité","Cloud","Data","Innovation"],typed=document.getElementById("typed");
+let i=0,j=0,del=false;
+(function loop(){
+  typed.textContent=words[i].substring(0,j);
+  if(!del&&j++===words[i].length){del=true;setTimeout(loop,1200);return;}
+  if(del&&j--===0){del=false;i=(i+1)%words.length;}
+  setTimeout(loop,del?60:120);
+})();
+
+/* ----- Dark mode toggle ----- */
+const toggle=document.getElementById('themeToggle');
+toggle.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  toggle.innerHTML=document.body.classList.contains('dark')?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';
+});
+
+/* ----- Skill filter ----- */
+document.querySelectorAll('.filter-btns button').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.filter-btns button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const f=btn.dataset.filter;
+  document.querySelectorAll('.skill-block').forEach(b=>{
+    b.style.display=(f==='all'||b.classList.contains(f))?'block':'none';
+  });
+}));
+
+/* ----- Leaflet map ----- */
+window.addEventListener('load',()=>{
+  if(document.getElementById('map')){
+    const map=L.map('map',{scrollWheelZoom:false}).setView([48.79,2.4],11);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
+    L.marker([48.8305,2.355]).addTo(map).bindPopup('ESIEA – Paris');
+    L.marker([48.7878,2.418]).addTo(map).bindPopup('IUT Créteil-Vitry');
+    L.marker([48.816,2.509]).addTo(map).bindPopup('Champigny-sur-Marne');
+  }
+});
   </script>
 </body>
 </html>
