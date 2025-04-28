@@ -1,396 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Omer - CV</title>
-
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="css/style.css" />
-
-  <!-- Google Fonts (Poppins Example) -->
+  <title>Portfolio – Omer JAVAID</title>
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" 
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- AOS / VanillaTilt -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Custom spices -->
+  <style>
+    :root{--primary:#007bff;--card-bg:#fff;--dark-bg:#121212;--dark-text:#e6e6e6;}
+    body.dark{background:var(--dark-bg);color:var(--dark-text);}body.dark header{background:rgba(18,18,18,.9);}body.dark .cert-block,body.dark .skill-block,body.dark .loc-card{background:#1e1e1e;color:var(--dark-text);}body.dark .bubble{background:#1e1e1e;}
+    /* Hero */
+    .hero-section{height:100vh;background:url('assets/hero.jpg') center/cover fixed no-repeat;}
+    .typed-cursor{display:inline-block;width:.1em;background:currentColor;animation:blink .7s steps(1) infinite;}@keyframes blink{50%{background:transparent;}}
+    #themeToggle{background:none;border:none;color:var(--primary);font-size:1.3rem;cursor:pointer;}#themeToggle:hover{transform:rotate(20deg);} .navbar{gap:1rem;}
+    /* Certifications */
+    .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;}
+    .cert-block{background:var(--card-bg);border-radius:10px;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;transition:transform .3s ease;} .cert-block:hover{transform:translateY(-4px);} .cert-block img{width:64px;height:64px;object-fit:contain;}
+    /* Localisation cards */
+    .loc-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;max-width:1200px;margin:0 auto;}
+    .loc-card{width:260px;height:180px;background:var(--card-bg);border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);perspective:1000px;cursor:pointer;} .loc-inner{width:100%;height:100%;position:relative;transition:transform .7s;transform-style:preserve-3d;} .loc-card:hover .loc-inner{transform:rotateY(180deg);} .loc-face{position:absolute;width:100%;height:100%;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;gap:.5rem;} .loc-face.front{background:var(--primary);color:#fff;} .loc-face.back{background:var(--card-bg);color:var(--text);transform:rotateY(180deg);} .loc-face i{font-size:2.2rem;}
+    /* Timeline */
+    .timeline{position:relative;margin:4rem 0;} .timeline::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:100%;background:var(--primary);} .t-item{position:relative;width:50%;padding:1rem 2rem;margin:2rem 0;} .t-item:nth-child(odd){left:0;text-align:right;} .t-item:nth-child(even){left:50%;} .bubble{background:var(--card-bg);padding:1rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);} .bubble img{width:48px;height:48px;margin-bottom:.5rem;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1));}
+    @media(max-width:768px){.t-item,.t-item:nth-child(even){left:0;width:100%;text-align:left;}}
+  </style>
 </head>
 <body>
-
-  <!-- HEADER / NAVBAR -->
+  <!-- NAVBAR -->
   <header>
     <nav class="navbar">
-      <div class="logo">Omer</div>
+      <div class="logo">Omer&nbsp;JAVAID</div>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#languages">Languages</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#formation">Formation</a></li>
+        <li><a href="#langues">Langues</a></li>
+        <li><a href="#competences">Compétences</a></li>
         <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#experience">Experience</a></li>
+        <li><a href="#experiences">Expériences</a></li>
+        <li><a href="#localisations">Localisations</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
     </nav>
   </header>
 
-  <!-- SECTION: HOME / HERO -->
-  <section id="home" class="hero-section" data-animate="fade-up">
+  <!-- HERO -->
+  <section id="accueil" class="hero-section" data-aos="fade-up">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Omer <span>JAVAID</span></h1>
-      <p>Networks & Telecommunications Student, specialized in Cybersecurity</p>
-
+      <h1><span id="typed"></span><span class="typed-cursor"></span></h1>
+      <p>Étudiant ingénieur ESIEA • Cybersécurité &amp; Cloud</p>
       <div class="hero-buttons">
-        <a href="#profile" class="btn-primary">Discover my CV</a>
-        <a 
-          href="docs/CV_JAVAID-Omer.pdf" 
-          class="btn-secondary" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          My CV in PDF
-        </a>
+        <a href="#profil" class="btn-primary">Découvrir mon profil</a>
+        <a href="CV_JAVAID-Omer.pdf" class="btn-secondary" target="_blank">CV&nbsp;FR</a>
+        <a href="CV_JAVAID%20Omer%20Anglais.pdf" class="btn-secondary" target="_blank">CV&nbsp;EN</a>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: PROFILE -->
-  <section id="profile" class="profile-section" data-animate="fade-up">
+  <!-- PROFILE -->
+  <section id="profil" class="profile-section" data-aos="fade-up">
     <div class="profile-container">
-      <div class="profile-image">
-        <!-- Replace with your own photo -->
-        <img src="docs/photocv.jpg" alt="Profile Photo" />
-      </div>
+      <div class="profile-image"><img src="photocv.jpg" alt="Photo"></div>
       <div class="profile-details">
-        <h2>Profile</h2>
-        <p>
-          I am a Networks and Telecommunications student with a strong interest in cybersecurity. My academic background has given me solid foundations in systems administration, virtualization, networking, and automation. Passionate about exploring complex technical environments, I enjoy building secure and efficient IT infrastructures. I am always looking to deepen my knowledge and take on new challenges that push me to grow both technically and personally.
-        </p>
+        <h2>À propos</h2>
+        <p>Cycle ingénieur <strong>ESIEA</strong> (Paris) après un BUT Réseaux &amp; Télécoms. Passionné par la <strong>cybersécurité</strong>, l’<strong>analyse de données</strong> et le <strong>cloud</strong>. Je recherche une alternance 3&nbsp;ans pour relever des défis SI.</p>
         <ul class="profile-infos">
-          <li><strong>Age:</strong> 19</li>
-          <li><strong>Nationality:</strong> French</li>
-          <li><strong>Driving License:</strong> Category B – Own vehicle</li>
-          <li><strong>Location:</strong> Champigny-sur-Marne, France</li>
-          <li><strong>Phone:</strong> (+33) 6 64 40 17 46</li>
-          <li>
-            <strong>Email:</strong> 
-            <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- EDUCATION -->
-    <div class="education-section">
-      <h2>Education</h2>
-
-      <!-- University -->
-      <div class="education-block" data-animate="fade-left">
-        <h3>UPEC, IUT Créteil-Vitry</h3>
-        <p class="subtitle">
-          <em>BUT in Networks & Telecommunications (Cybersecurity Specialization)</em>
-        </p>
-        <p class="dates">Sept. 2023 – Jul. 2026</p>
-
-        <div class="courses">
-          <h4>Key Courses</h4>
-          <ul>
-            <li>Advanced Networking, Cybersecurity Principles, Network Architecture</li>
-            <li>Cloud Computing, Database Management (SQL/NoSQL), Shell Scripting</li>
-            <li>Web Development (HTML, CSS, JS, PHP), Full-Stack (PHP, Python)</li>
-            <li>Telecommunications and Signal Transmission</li>
-          </ul>
-        </div>
-
-        <div class="projects">
-          <h4>Projects</h4>
-          <ul class="project-list">
-            <li>
-              Built a company website with <strong>SQL</strong> for <strong>authentication</strong>, <strong>cart</strong>, 
-              and <strong>payments</strong> using <strong>PHP</strong> and <strong>JavaScript</strong> (French)
-              <a 
-                href="docs/sae23.pdf" 
-                class="btn-project"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PDF
-              </a>
-            </li>
-            <li>
-              Designed a <strong>secure multi-site network infrastructure</strong> with <strong>routing</strong>, 
-              <strong>switching</strong>, and <strong>topology modeling</strong>, integrating 
-              <strong>VLANs</strong>, <strong>firewalls</strong>, <strong>VPNs</strong>, and <strong>QoS</strong> (French)
-              <a 
-                href="docs/saereseau.pdf" 
-                class="btn-project"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PDF
-              </a>
-            </li>
-            <li>
-              Developed a <strong>secure chat app</strong> (<strong>Java/SQL</strong>) with 
-              <strong>SSL/TLS</strong>, using <strong>AWT</strong>, <strong>Swing</strong>, and <strong>JDBC</strong> 
-              for a <strong>graphical interface</strong> and <strong>message storage</strong> (French)
-              <a 
-                href="docs/saejava.pdf" 
-                class="btn-project"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PDF
-              </a>
-            </li>
-            <li>
-              Built a <strong>LoRa data system</strong> with <strong>SDR</strong> and <strong>Flask</strong> 
-              for <strong>real-time signal analysis</strong> (French)
-              <a 
-                href="docs/sea301.pdf" 
-                class="btn-project"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PDF
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- High School -->
-      <div class="education-block" data-animate="fade-right">
-        <h3>Lycée Langevin Wallon</h3>
-        <p class="subtitle">
-          <em>High School Diploma – Science Track (Mathematics, Engineering)</em>
-        </p>
-        <p class="dates">Sept. 2020 – Jul. 2023</p>
-
-        <div class="courses">
-          <h4>Key Courses</h4>
-          <ul>
-            <li>Mathematics, Engineering Sciences, Physics</li>
-            <li>Basic introduction to IT systems</li>
-          </ul>
-        </div>
-
-        <div class="projects">
-          <h4>Projects</h4>
-          <ul>
-            <li>Python script to measure elapsed time (time library)</li>
-            <li>Basic calculator in Python (arithmetic operations)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION: LANGUAGES -->
-  <section id="languages" class="languages-section" data-animate="fade-up">
-    <h2>Languages</h2>
-    <div class="languages-container">
-      <div class="language-block">
-        <ul>
-          <li>English (B2 – Upper Intermediate)</li>
-          <li>French (C2 – Native)</li>
-          <li>Urdu (C2 – Native)</li>
-          <li>Spanish (A2 – Beginner)</li>
-          <li>Hindi (A2 – Beginner)</li>
+          <li><strong>Âge :</strong> 20&nbsp;ans</li>
+          <li><strong>Localisation :</strong> Champigny-sur-Marne (94)</li>
+          <li><strong>Tél :</strong> +33&nbsp;6&nbsp;64&nbsp;40&nbsp;17&nbsp;46</li>
+          <li><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: SKILLS -->
-  <section id="skills" class="skills-section" data-animate="fade-up">
-    <h2>Skills</h2>
-
-    <div class="skills-container">
-      <!-- PROGRAMMING -->
-      <div class="skill-block">
-        <h3>Programming</h3>
-        <ul>
-          <li>
-            <strong>Python</strong>  
-            <ul>
-              <li>Flask, JSON, Pandas, Matplotlib, SQLAlchemy</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Java</strong>
-            <ul>
-              <li>JDBC, AWT, Swing</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Web Development</strong>
-            <ul>
-              <li>HTML, CSS, JavaScript (<strong>React.js</strong>), PHP</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Databases</strong>
-            <ul>
-              <li>MySQL, PostgreSQL, Live SQL</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- NETWORKING, TELECOM, CYBERSEC -->
-      <div class="skill-block">
-        <h3>Networking, Telecom & Cybersecurity</h3>
-        <ul>
-          <li><strong>Protocols:</strong> TCP/IP, VLAN, OSPF, EIGRP, BGP, MPLS, VPN</li>
-          <li><strong>Advanced:</strong> VoIP, NAT, QoS, 5G fundamentals, advanced MPLS</li>
-          <li><strong>Security:</strong> Kali Linux, Metasploit, IDS, SSL/TLS, Firewalls</li>
-          <li><strong>Analysis:</strong> Wireshark, Packet Tracer, GNS3</li>
-        </ul>
-      </div>
-      
-      <!-- VIRTUALIZATION & SYSTEMS -->
-      <div class="skill-block">
-        <h3>Virtualization & Systems</h3>
-        <ul>
-          <li><strong>Hypervisors:</strong> VMware, VirtualBox</li>
-          <li><strong>Operating Systems:</strong> Linux (Ubuntu, Debian), Windows Server</li>
-          <li><strong>Scripting:</strong> Bash/PowerShell</li>
-        </ul>
-      </div>
-
-      <!-- OTHERS -->
-      <div class="skill-block">
-        <h3>Others</h3>
-        <ul>
-          <li><strong>Office Tools:</strong> Word, Excel, PowerPoint, Outlook</li>
-          <li><strong>Basic DevOps knowledge:</strong> CI/CD, Docker fundamentals</li>
-        </ul>
-      </div>
+  <!-- EDUCATION -->
+  <section id="formation" data-aos="fade-up" style="padding:4rem 2rem;">
+    <h2 style="text-align:center;margin-bottom:2rem;">Formation</h2>
+    <div class="edu-container">
+      <div class="edu-block" data-aos="fade-right"><h3>ESIEA – École d’ingénieurs du numérique</h3><p class="dates">2025 – 2028</p><p>Cycle ingénieur – Majeure Sécurité SI</p></div>
+      <div class="edu-block" data-aos="fade-left"><h3>UPEC, IUT Créteil-Vitry</h3><p class="dates">2023 – 2025</p><p>BUT Réseaux &amp; Télécoms – Cybersécurité</p><ul style="margin-top:.8rem;list-style:disc inside;"><li>Projets : e‑commerce PHP/SQL, maquette réseau GNS3, chat chiffré Java, transmission LoRa SDR.</li></ul></div>
+      <div class="edu-block" data-aos="fade-right"><h3>Lycée Langevin Wallon</h3><p class="dates">2020 – 2023</p><p>Bac Général – Maths &amp; Sciences de l’Ingénieur</p></div>
     </div>
   </section>
 
-  <!-- SECTION: CERTIFICATIONS -->
-  <section id="certifications" class="certifications-section" data-animate="fade-up">
+  <!-- LANGUAGES -->
+  <section id="langues" data-aos="fade-up" style="padding:4rem 2rem;background:#fefefe;">
+    <h2 style="text-align:center;margin-bottom:1.5rem;">Langues</h2>
+    <div class="lang-list"><span class="lang-tag">Français – C2</span><span class="lang-tag">Anglais – B2</span><span class="lang-tag">Urdu – C2</span><span class="lang-tag">Espagnol – A2</span><span class="lang-tag">Hindi – A2</span></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="competences" class="skills-section" data-aos="fade-up">
+    <h2>Compétences</h2>
+    <div class="filter-btns"><button class="active" data-filter="all">Toutes</button><button data-filter="reseau">Réseaux</button><button data-filter="dev">Développement</button><button data-filter="cloud">Cloud &amp; Virtualisation</button><button data-filter="data">Data / BI</button></div>
+    <div class="skills-container" id="skillsGrid">
+      <div class="skill-block reseau"><h3>Réseaux &amp; Sécurité</h3><ul><li>TCP/IP, OSPF, BGP, VLAN, MPLS, VPN/IPsec</li><li>Fortigate, Cisco ASA, IDS/IPS</li><li>Wireshark, GNS3, Packet Tracer</li></ul></div>
+      <div class="skill-block dev"><h3>Développement</h3><ul><li>Python (Flask, Pandas)</li><li>Java (Swing, JDBC)</li><li>React, PHP</li><li>SQL : MySQL, PostgreSQL</li></ul></div>
+      <div class="skill-block cloud"><h3>Cloud &amp; Virtualisation</h3><ul><li>AWS (IAM, EC2, VPC)</li><li>Docker, VMware</li><li>Linux, Windows Server</li></ul></div>
+      <div class="skill-block data"><h3>Data &amp; BI</h3><ul><li>Power BI (DAX, rapports)</li><li>Excel (TCD, VBA)</li><li>ETL basique (Talend, Python)</li></ul></div>
+      <div class="skill-block dev cloud data"><h3>Gestion de projet</h3><ul><li>Agile/Scrum, Kanban</li><li>Jira, Trello, Confluence</li><li>Soft skills : communication, créativité</li></ul></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="certifications-section" data-aos="fade-up">
     <h2>Certifications</h2>
-    <div class="certifications-container">
-      <div class="certification-block">
-        <ul>
-          <li><strong>CCNA Cisco</strong> (Routing & Switching)</li>
-          <li><strong>CCNA v2</strong> (Extended Network Knowledge)</li>
-          <li><strong>Root-Me</strong> (1300 points in cybersecurity challenges)</li>
-          <li><strong>PIX Digital Skills Certification</strong></li>
-          <li><strong>SecNumAcadémie</strong> (Cybersecurity – ANSSI, France)</li>
-        </ul>
+    <div class="certs-grid">
+      <a class="cert-block" href="assets/certs/aws.png" target="_blank"><img src="assets/certs/aws.png" alt="AWS"><h3>AWS Fundamentals</h3><p>2025</p></a>
+      <a class="cert-block" href="assets/certs/google.png" target="_blank"><img src="assets/certs/google.png" alt="Google"><h3>Google Cybersecurity</h3><p>2025</p></a>
+      <a class="cert-block" href="https://www.credly.com/badges/bbf2976e-eb9a-4c77-8a56-0ce7bc0be392" target="_blank"><h3>CCNA v7 ITN</h3><p>2024</p></a>
+      <a class="cert-block" href="https://www.credly.com/badges/491acd4a-a560-4610-8e22-1d479135de7c" target="_blank"><h3>CCNA v7 SRWE</h3><p>2024</p></a>
+      <div class="cert-block"><h3>CCNA v7 ENSA</h3><p>2025</p></div>
+      <a class="cert-block" href="assets/certs/ibm.png" target="_blank"><img src="assets/certs/ibm.png" alt="IBM"><h3>IBM Intro Cyber</h3><p>2025</p></a>
+      <div class="cert-block"><h3>SecNumAcadémie (ANSSI)</h3><p>2024</p></div>
+      <div class="cert-block"><h3>Root‑Me – 1300 pts</h3><p>2024</p></div>
+      <a class="cert-block" href="assets/certs/pix.png" target="_blank"><img src="assets/certs/pix.png" alt="Pix"><h3>Certification Pix</h3><p>2023</p></a>
+      <a class="cert-block" href="assets/certs/bafa.png" target="_blank"><img src="assets/certs/bafa.png" alt="BAFA"><h3>BAFA</h3><p>2022</p></a>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section id="experiences" class="experience-section" data-aos="fade-up">
+    <h2>Expériences Professionnelles</h2>
+    <div class="timeline">
+      <div class="t-item" data-aos="fade-right"><div class="bubble"><img src="assets/companies/sofiadis.png" alt="Sofiadis"><h3>Pentest Web – Sofiadis</h3><p class="dates">2025</p><ul><li>10 000 requêtes HTTP analysées</li><li>30+ vulnérabilités trouvées</li></ul></div></div>
+      <div class="t-item" data-aos="fade-left"><div class="bubble"><img src="assets/companies/basicfit.png" alt="Basic Fit"><h3>Réceptionniste – Basic Fit</h3><p class="dates">2024</p><ul><li>Accueil &amp; accompagnement</li><li>Procédures sécurité</li></ul></div></div>
+      <div class="t-item" data-aos="fade-right"><div class="bubble"><img src="assets/companies/mairie_champigny.png" alt="Mairie"><h3>Assistant administratif – Mairie</h3><p class="dates">2023</p><ul><li>Accueil public &amp; téléphone</li><li>Logistique événements</li></ul></div></div>
+      <div class="t-item" data-aos="fade-left"><div class="bubble"><img src="assets/companies/simon_veil.png" alt="Centre Loisir"><h3>Animateur – Centre de loisirs</h3><p class="dates">2022</p><ul><li>Encadrement enfants 6‑12 ans</li></ul></div></div>
+      <div class="t-item" data-aos="fade-right"><div class="bubble"><img src="assets/companies/inventive.png" alt="Inventive"><h3>Stagiaire IT – Inventive Informatique</h3><p class="dates">2020‑2021</p><ul><li>Installation postes &amp; réseau</li></ul></div></div>
+    </div>
+  </section>
+
+  <!-- LOCALISATIONS -->
+  <section id="localisations" data-aos="fade-up" style="padding:4rem 2rem;background:#fefefe;">
+    <h2 style="text-align:center;margin-bottom:2rem;">Mes lieux clés</h2>
+    <div class="loc-wrap">
+      <div class="loc-card" data-tilt>
+        <div class="loc-inner">
+          <div class="loc-face front"><i class="fa-solid fa-school"></i><h3>ESIEA – Paris</h3></div>
+          <div class="loc-face back"><p>9 Rue Vésale, 75005 Paris</p><a href="https://goo.gl/maps/dGJb" target="_blank" class="btn-secondary" style="margin-top:.5rem;">Maps</a></div>
+        </div>
+      </div>
+      <div class="loc-card" data-tilt>
+        <div class="loc-inner">
+          <div class="loc-face front"><i class="fa-solid fa-network-wired"></i><h3>IUT&nbsp;R&T – Vitry</h3></div>
+          <div class="loc-face back"><p>61 Av. du Général de Gaulle, Vitry‑sur‑Seine</p><a href="https://goo.gl/maps/3yqx" target="_blank" class="btn-secondary" style="margin-top:.5rem;">Maps</a></div>
+        </div>
+      </div>
+      <div class="loc-card" data-tilt>
+        <div class="loc-inner">
+          <div class="loc-face front"><i class="fa-solid fa-house"></i><h3>Champigny‑sur‑Marne</h3></div>
+          <div class="loc-face back"><p>Ville natale &amp; actuelle</p><a href="https://goo.gl/maps/vMMS" target="_blank" class="btn-secondary" style="margin-top:.5rem;">Maps</a></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: EXPERIENCE -->
-  <section id="experience" class="experience-section" data-animate="fade-up">
-    <h2>Professional Experience</h2>
-
-    <div class="experience-block" data-animate="fade-left">
-      <h3>Receptionist – Basic Fit</h3>
-      <p class="dates">Jun. 2024 – Jul. 2024, Champigny-sur-Marne</p>
-      <ul>
-        <li>Welcomed customers and checked membership cards</li>
-        <li>Handled client requests, complaints, and general inquiries</li>
-        <li>Ensured front-desk procedures and security protocols</li>
-      </ul>
-    </div>
-
-    <div class="experience-block" data-animate="fade-right">
-      <h3>Administrative Assistant – Champigny Town Hall</h3>
-      <p class="dates">Sept. 2023 – Feb. 2023, Champigny-sur-Marne</p>
-      <ul>
-        <li>Handled incoming calls and welcomed visitors</li>
-        <li>Carried out data entry and archiving tasks</li>
-        <li>Assisted with event planning and scheduling</li>
-      </ul>
-    </div>
-
-    <div class="experience-block" data-animate="fade-left">
-      <h3>Activity Leader – Leisure Center (Simon Veil School)</h3>
-      <p class="dates">Jul. 2022 – Aug. 2022, Champigny-sur-Marne</p>
-      <ul>
-        <li>Organized and led activities for groups of children</li>
-        <li>Handled logistics: supplies, scheduling, parent communications</li>
-      </ul>
-    </div>
-
-    <div class="experience-block" data-animate="fade-right">
-      <h3>IT Intern – Inventive Informatique</h3>
-      <p class="dates">Dec. 2020 – Jan. 2021, Saint-Maur-des-Fossés</p>
-      <ul>
-        <li>Set up and configured workstations</li>
-        <li>Installed and maintained network infrastructure</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- SECTION: CONTACT -->
-  <section id="contact" class="contact-section" data-animate="fade-up">
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section" data-aos="fade-up">
     <h2>Contact</h2>
-    <p class="contact-intro">
-      Interested in my profile or want to discuss an opportunity? Feel free to reach out!
-    </p>
-
+    <p class="contact-intro">Un projet ? Une opportunité ? Parlons‑en !</p>
     <div class="contact-container">
-      <!-- Contact info -->
-      <div class="contact-infos">
-        <p><strong>Location:</strong> Champigny-sur-Marne, France</p>
-        <p><strong>Phone:</strong> (+33) 6 64 40 17 46</p>
-        <p>
-          <strong>Email:</strong> 
-          <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a>
-        </p>
-        <p>
-          <strong>LinkedIn:</strong> 
-          <a 
-            href="https://www.linkedin.com/in/omer-javaid-3b1787285/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            My LinkedIn Profile
-          </a>
-        </p>
-      </div>
-
-      <!-- Contact form -->
-      <form 
-        class="contact-form" 
-        method="POST" 
-        action="mailto:omerjavaid2304@outlook.fr" 
-        enctype="text/plain"
-      >
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required />
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Your email" required />
-
-        <label for="message">Message:</label>
-        <textarea 
-          id="message" 
-          name="message"
-          rows="5" 
-          placeholder="Your message" 
-          required
-        ></textarea>
-
-        <button type="submit" class="btn-primary">Send</button>
-      </form>
+      <div class="contact-infos"><p><strong>Localisation :</strong> Champigny‑sur‑Marne</p><p><strong>Tél :</strong> +33 6 64 40 17 46</p><p><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></p><p><strong>GitLab :</strong> <a href="https://gitlab.com/YourGitLabUsername" target="_blank">Mes projets</a></p><p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/omer-javaid-3b1787285/" target="_blank">Profil LinkedIn</a></p></div>
+      <form class="contact-form" method="POST" action="mailto:omerjavaid2304@outlook.fr" enctype="text/plain"><label for="nom">Nom :</label><input type="text" id="nom" name="nom" required><label for="courriel">Email :</label><input type="email" id="courriel" name="courriel" required><label for="message">Message :</label><textarea id="message" name="message" rows="5" required></textarea><button type="submit" class="btn-primary">Envoyer</button></form>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; 2025 - Omer JAVAID. All Rights Reserved.</p>
-  </footer>
+  <footer class="footer"><p>&copy; 2025 – Omer JAVAID. Tous droits réservés.</p></footer>
 
-  <!-- MAIN JS SCRIPT -->
-  <script src="js/script.js"></script>
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <script>
+    AOS.init({once:true,duration:800});
+    // typed effect
+    const words=["Réseaux","Cybersécurité","Cloud","Data","Innovation"],typed=document.getElementById('typed');let i=0,j=0,del=false;function loop(){typed.textContent=words[i].substring(0,j);if(!del&&j++===words[i].length){del=true;setTimeout(loop,1200);return}if(del&&j--===0){del=false;i=(i+1)%words.length;}setTimeout(loop,del?60:120);}loop();
+    // theme toggle
+    const toggle=document.getElementById('themeToggle');toggle.addEventListener('click',()=>{document.body.classList.toggle('dark');toggle.innerHTML=document.body.classList.contains('dark')?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';});
+    // skill filter
+    document.querySelectorAll('.filter-btns button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btns button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.skill-block').forEach(b=>{b.style.display=(f==='all'||b.classList.contains(f))?'block':'none';});}));
+  </script>
 </body>
 </html>
