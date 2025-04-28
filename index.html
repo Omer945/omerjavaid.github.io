@@ -505,6 +505,12 @@ body.dark .bubble {
   background: var(--primary);
   color: #fff;
 }
+.edu-logo {
+  width: 40px; /* Ajuste la taille du logo ici */
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
 
 [data-aos] {
   opacity: 0;
@@ -571,93 +577,83 @@ body.dark .bubble {
   </section>
 
   <!-- ======= FORMATION + MAP ======= -->
-  <section id="formation" data-aos="fade-up">
-    <h2>Formation &amp; Lieux clés</h2>
-    <div class="edu-container">
-      <div class="edu-block" data-aos="fade-right">
-        <h3>ESIEA – École d’ingénieurs du numérique <small>– Paris, France</small></h3>
-        <p class="subtitle">Cycle ingénieur – CTI</p>
-        <p class="dates">Septembre 2025 – Juillet 2028</p>
-        <p>Consolidation avancée des compétences en informatique (systèmes, réseaux, développement) en vue d’une spécialisation en cybersécurité dès la 4ᵉ année. Acquisition de solides compétences techniques, managériales et méthodologiques pour intervenir efficacement dans la sécurisation des systèmes d'information.</p>
+<section id="formation" data-aos="fade-up">
+  <h2>Formation &amp; Lieux clés</h2>
+  <div class="edu-container">
+    <div class="edu-block" data-aos="fade-right">
+      <h3>
+        <img src="assets/schools/esiea.png" alt="ESIEA Logo" class="edu-logo" />
+        ESIEA – École d’ingénieurs du numérique <small>– Paris, France</small>
+      </h3>
+      <p class="subtitle">Cycle ingénieur – CTI</p>
+      <p class="dates">Septembre 2025 – Juillet 2028</p>
+      <p>Consolidation avancée des compétences en informatique (systèmes, réseaux, développement) en vue d’une spécialisation en cybersécurité dès la 4ᵉ année. Acquisition de solides compétences techniques, managériales et méthodologiques pour intervenir efficacement dans la sécurisation des systèmes d'information.</p>
+    </div>
+
+    <div class="edu-block" data-aos="fade-left">
+      <h3>
+        <img src="assets/schools/iut.png" alt="UPEC Logo" class="edu-logo" />
+        UPEC, IUT Créteil-Vitry
+      </h3>
+      <p class="subtitle">
+        <em>BUT Réseaux & Télécommunications (Spécialisation Cybersécurité)</em>
+      </p>
+      <p class="dates">Septembre 2023 – Juillet 2026</p>
+
+      <div class="courses">
+        <h4>Cours principaux</h4>
+        <ul>
+          <li>Réseaux avancés, Principes de cybersécurité, Architecture réseau</li>
+          <li>Cloud Computing, Gestion de bases de données (SQL/NoSQL), Scripts Shell</li>
+          <li>Développement Web (HTML, CSS, JS, PHP), Full-Stack (PHP, Python)</li>
+          <li>Télécommunications et transmission de signaux</li>
+        </ul>
+      </div>
+
+      <div class="projects">
+        <h4>Projets</h4>
+        <ul class="project-list">
+          <li>
+            Création d'un site e-commerce sécurisé avec <strong>authentification SQL</strong>, 
+            <strong>panier</strong> et <strong>paiement</strong> en <strong>PHP</strong> et <strong>JavaScript</strong>
+            <a href="sae23.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+          </li>
+          <li>
+            Conception d'une <strong>infrastructure réseau multi-site sécurisée</strong> avec 
+            <strong>routage</strong>, <strong>commutation</strong> et modélisation de <strong>topologies</strong>,
+            intégrant <strong>VLANs</strong>, <strong>pare-feux</strong>, <strong>VPN</strong> et <strong>QoS</strong>
+            <a href="saereseau.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+          </li>
+          <li>
+            Développement d'une <strong>application de chat sécurisé</strong> (<strong>Java/SQL</strong>) 
+            avec <strong>SSL/TLS</strong>, utilisant <strong>AWT</strong>, <strong>Swing</strong> et <strong>JDBC</strong> 
+            pour l'interface graphique et le stockage des messages
+            <a href="saejava.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+          </li>
+          <li>
+            Réalisation d'un <strong>système de données LoRa</strong> avec <strong>SDR</strong> et <strong>Flask</strong> 
+            pour l'analyse temps réel des signaux
+            <a href="sea301.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <h3>UPEC, IUT Créteil-Vitry</h3>
-    <p class="subtitle">
-      <em>BUT Réseaux & Télécommunications (Spécialisation Cybersécurité)</em>
-    </p>
-    <p class="dates">Septembre 2023 – Juillet 2026</p>
-    <div class="courses">
-      <h4>Cours principaux</h4>
-      <ul>
-        <li>Réseaux avancés, Principes de cybersécurité, Architecture réseau</li>
-        <li>Cloud Computing, Gestion de bases de données (SQL/NoSQL), Scripts Shell</li>
-        <li>Développement Web (HTML, CSS, JS, PHP), Full-Stack (PHP, Python)</li>
-        <li>Télécommunications et transmission de signaux</li>
-      </ul>
-    </div>
-    <div class="projects">
-      <h4>Projets</h4>
-      <ul class="project-list">
-        <li>
-          Création d'un site e-commerce sécurisé avec <strong>authentification SQL</strong>, 
-          <strong>panier</strong> et <strong>paiement</strong> en <strong>PHP</strong> et <strong>JavaScript</strong>
-          <a 
-            href="sae23.pdf" 
-            class="btn-project"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Voir le PDF
-          </a>
-        </li>
-        <li>
-          Conception d'une <strong>infrastructure réseau multi-site sécurisée</strong> avec 
-          <strong>routage</strong>, <strong>commutation</strong> et modélisation de <strong>topologies</strong>, 
-          intégrant <strong>VLANs</strong>, <strong>pare-feux</strong>, <strong>VPN</strong> et <strong>QoS</strong>
-          <a 
-            href="saereseau.pdf" 
-            class="btn-project"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Voir le PDF
-          </a>
-        </li>
-        <li>
-          Développement d'une <strong>application de chat sécurisé</strong> (<strong>Java/SQL</strong>) 
-          avec <strong>SSL/TLS</strong>, utilisant <strong>AWT</strong>, <strong>Swing</strong> et <strong>JDBC</strong> 
-          pour l'interface graphique et le stockage des messages
-          <a 
-            href="saejava.pdf" 
-            class="btn-project"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Voir le PDF
-          </a>
-        </li>
-        <li>
-          Réalisation d'un <strong>système de données LoRa</strong> avec <strong>SDR</strong> et <strong>Flask</strong> 
-          pour l'analyse temps réel des signaux
-          <a 
-            href="sea301.pdf" 
-            class="btn-project"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Voir le PDF
-          </a>
-        </li>
-      </ul>
-    </div>
+
     <div class="edu-block" data-aos="fade-right">
-      <h3>Lycée Langevin Wallon <small>– Champigny-sur-Marne, France</small></h3>
+      <h3>
+        <img src="assets/schools/lycee.png" alt="Lycée Logo" class="edu-logo" />
+        Lycée Langevin Wallon <small>– Champigny-sur-Marne, France</small>
+      </h3>
       <p class="subtitle">Baccalauréat Général – Spécialités Mathématiques, Sciences de l’Ingénieur (SI) et Numérique & Sciences Informatiques (NSI)</p>
       <p class="dates">Septembre 2020 – Juillet 2023</p>
       <p>Formation axée sur les fondamentaux scientifiques et technologiques : modélisation, algorithmique, programmation Python/Arduino, conception de systèmes mécatroniques, ainsi qu'une approche avancée des mathématiques (analyse, algèbre, probabilités). Participation active à divers projets interdisciplinaires en sciences et numérique.</p>
     </div>
-    <div id="map" data-aos="zoom-in"></div>
-  </section>
+  </div>
+
+  <!-- Ajout de la carte -->
+  <div id="map" data-aos="zoom-in"></div>
+</section>
+
 
   <!-- ======= LANGUES ======= -->
   <section id="langues" data-aos="fade-up">
