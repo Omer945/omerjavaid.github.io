@@ -571,12 +571,14 @@ section {
 }
 
 /* Global settings for timeline */
+/* Global settings for timeline */
 .experience-section {
   padding: 4rem 2rem;
   background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0; /* Remove extra margins */
 }
 
 /* Title settings */
@@ -590,19 +592,7 @@ section {
   text-transform: uppercase;
 }
 
-.experience-section h2::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary);
-  border-radius: 10px;
-}
-
-/* Container for the timeline */
+/* Timeline container */
 .timeline {
   position: relative;
   display: flex;
@@ -610,51 +600,32 @@ section {
   gap: 50px;
   align-items: center;
   width: 100%;
+  margin: 0; /* Remove margins */
 }
 
-/* Line in the middle of the timeline */
-.timeline:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: 100%;
-  width: 3px;
-  background: linear-gradient(180deg, #007bff, #00c1ff);
-  z-index: -1;
-  transform: translateX(-50%);
-}
-
-/* Individual timeline item style */
+/* Timeline item box */
 .timeline-item {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  padding: 25px;
-  width: 80%;
+  padding: 20px 15px; /* Adjust padding for less space */
+  width: 100%;
   max-width: 600px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease;
+  margin: 0; /* Remove margin around items */
 }
 
+/* Timeline item hover effect */
 .timeline-item:hover {
   transform: translateY(-10px);
 }
 
-/* Arrow added between the items */
-.timeline-item::before {
-  content: '→';
-  position: absolute;
-  top: -30px;
-  font-size: 30px;
-  color: var(--primary);
-}
-
-/* Icons or logos inside each timeline item */
+/* Icon inside each timeline item */
 .company-logo {
   width: 80px;
   height: 80px;
@@ -682,6 +653,19 @@ section {
   line-height: 1.6;
 }
 
+/* Remove margins from the line */
+.timeline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(180deg, #007bff, #00c1ff);
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
 /* For smaller screen sizes */
 @media (max-width: 768px) {
   .timeline {
@@ -700,6 +684,7 @@ section {
     top: -10px;
   }
 }
+
 
 /* Responsive */
 @media (max-width: 768px) {
