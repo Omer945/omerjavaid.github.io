@@ -1647,23 +1647,19 @@ document.addEventListener("DOMContentLoaded", function () {
   // Par défaut, afficher toutes les compétences au chargement
   document.querySelector(".filter-btns button.active").click();
 });
-   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.14"></script>
-<script>
-  var options = {
-    strings: ["Cybersécurité", "Innovation", "Cloud", "Développement Web"],
-    typeSpeed: 60,
-    backSpeed: 50,
-    backDelay: 1500,
-    startDelay: 500,
-    loop: true
-  };
+   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.14">
+   document.addEventListener('DOMContentLoaded', function () {
+    var options = {
+      strings: ["Cybersécurité", "Innovation", "Cloud", "Développement Web"], // Les mots à afficher
+      typeSpeed: 100, // Vitesse de frappe
+      backSpeed: 50, // Vitesse de suppression
+      backDelay: 1000, // Délai avant de commencer à supprimer un mot
+      startDelay: 500, // Délai avant de commencer à écrire
+      loop: true // Pour répéter l'animation
+    };
 
-  var typed = new Typed("#typed", options);
-</script>
-
-
-
-
+    var typed = new Typed("#typed", options); // Applique l'effet sur l'élément avec l'ID "typed"
+  });
 </script>
 
 </body>
