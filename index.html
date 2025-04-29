@@ -686,6 +686,20 @@ section {
     transform: translateY(0);
   }
 }
+/* Animation pour une apparition fluide */
+.skill-block {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Quand un bloc est visible (ajout de la classe 'visible') */
+.skill-block.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
   </style>
@@ -1060,7 +1074,6 @@ document.addEventListener('DOMContentLoaded', () => {
     delay: 200
   });
 });
-// Script pour le filtrage des compétences
 document.addEventListener("DOMContentLoaded", function () {
   const filterButtons = document.querySelectorAll(".filter-btns button");
   const skillBlocks = document.querySelectorAll(".skill-block");
@@ -1076,15 +1089,18 @@ document.addEventListener("DOMContentLoaded", function () {
       // Affichage des compétences selon le filtre
       skillBlocks.forEach(block => {
         if (filter === "all" || block.classList.contains(filter)) {
-          block.style.display = "block";
-          block.classList.add("fadeIn");
+          block.classList.add("visible");
         } else {
-          block.style.display = "none";
+          block.classList.remove("visible");
         }
       });
     });
   });
+
+  // Par défaut, afficher toutes les compétences au chargement
+  document.querySelector(".filter-btns button.active").click();
 });
+
 
 
 </script>
