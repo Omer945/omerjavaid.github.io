@@ -14,372 +14,521 @@
 
   <style>
     :root {
-      --primary: #007bff;
-      --gradient: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
-      --bg-light: #f8f9fa;
-      --card-bg: #ffffff;
-      --text: #2d3436;
-      --dark-bg: #121212;
-      --dark-text: #e6e6e6;
-      --shadow: 0 4px 24px rgba(0,0,0,0.08);
-    }
+  --primary: #007bff;
+  --bg-light: #f4f4f4;
+  --card-bg: #ffffff;
+  --text: #333;
+  --dark-bg: #121212;
+  --dark-text: #e6e6e6;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* RESET & GLOBAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-light);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.3s, color 0.3s;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-light);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
 
-    body.dark {
-      background: var(--dark-bg);
-      color: var(--dark-text);
-    }
+body.dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
 
-    /* Header */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1.5rem 5%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
+/* ====== HEADER ====== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 5px var(--shadow-color);
+  z-index: 1000;
+}
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
 
-    .nav-links a {
-      text-decoration: none;
-      color: inherit;
-      font-weight: 500;
-      position: relative;
-      padding: 0.5rem 0;
-    }
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+}
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
+.nav-links a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s;
+}
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+.nav-links a:hover {
+  color: var(--primary);
+}
 
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 5% 4rem;
-      background: var(--gradient);
-      color: white;
-    }
+#themeToggle {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
 
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
+#themeToggle:hover {
+  transform: rotate(20deg);
+}
 
-    .hero-buttons {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 3rem;
-    }
+/* ====== HERO ====== */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('assets/hero.jpg') center/cover fixed no-repeat;
+  position: relative;
+}
 
-    /* Section Styles */
-    section {
-      padding: 6rem 5%;
-    }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 4rem;
-      font-size: 2.5rem;
-      position: relative;
-    }
+.hero-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  max-width: 700px;
+}
 
-    .section-title::after {
-      content: '';
-      width: 60px;
-      height: 3px;
-      background: var(--primary);
-      position: absolute;
-      bottom: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
 
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
+.hero-content p {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
 
-    /* Timeline */
-    .timeline {
-      position: relative;
-      max-width: 1200px;
-      margin: 4rem auto;
-    }
+.btn-primary, .btn-secondary {
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      background: var(--primary);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -2px;
-    }
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
 
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.btn-primary:hover {
+  background: #0056b3;
+}
 
-    .skill-card {
-      padding: 2rem;
-      border-radius: 12px;
-      background: var(--card-bg);
-      text-align: center;
-      transition: all 0.3s ease;
-    }
+.btn-secondary {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: #fff;
+}
 
-    .skill-card:hover {
-      box-shadow: var(--shadow);
-    }
+.btn-secondary:hover {
+  background: var(--primary);
+  color: #fff;
+}
 
-    /* Buttons */
-    .btn {
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+/* ====== PROFILE ====== */
+.profile-section {
+  padding: 4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
-    .btn-primary {
-      background: var(--gradient);
-      color: white;
-      border: 2px solid transparent;
-    }
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,123,255,0.3);
-    }
+.profile-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
 
-    .btn-outline {
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: transparent;
-    }
+.profile-details {
+  flex: 1;
+  max-width: 600px;
+}
 
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
+.profile-details h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-    /* Dark Mode */
-    body.dark .card,
-    body.dark .skill-card {
-      background: #1e1e1e;
-    }
+.profile-details p {
+  margin-bottom: 1.5rem;
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+.profile-infos {
+  list-style: none;
+}
+
+.profile-infos li {
+  margin-bottom: 0.5rem;
+}
+
+/* ====== FORMATION & CERTIFICATIONS ====== */
+section {
+  padding: 4rem 2rem;
+}
+
+.edu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.edu-block {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  width: 48%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.edu-block:hover {
+  transform: translateY(-5px);
+}
+
+.certifications-section .certs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.cert-block {
+  flex: 1 1 48%;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.cert-block:hover {
+  transform: translateY(-5px);
+}
+
+/* ====== CONTACT ====== */
+.contact-section {
+  background: #fafafa;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.contact-infos, .contact-form {
+  flex: 1;
+  max-width: 500px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: inherit;
+  margin-bottom: 1rem;
+}
+
+.contact-form button {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #0056b3;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .edu-block {
+    width: 100%;
+  }
+
+  .cert-block {
+    flex: 1 1 100%;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">OJ</div>
-    <ul class="nav-links">
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#profil">Profil</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#experiences">Expériences</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- ======= NAVBAR ======= -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Omer&nbsp;JAVAID</div>
+      <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#formation">Formation</a></li>
+        <li><a href="#langues">Langues</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#experiences">Expériences</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="accueil" data-aos="fade-up">
+  <!-- ======= HERO ======= -->
+  <section id="accueil" class="hero-section" data-aos="fade-up">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Omer JAVAID<br><span style="font-weight: 300">Ingénieur Cybersécurité & Cloud</span></h1>
+      <h1><span id="typed"></span><span class="typed-cursor"></span></h1>
+      <p>Étudiant ingénieur ESIEA • Cybersécurité&nbsp;&amp;&nbsp;Cloud</p>
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Contactez-moi</a>
-        <a href="#profil" class="btn btn-outline">Découvrir</a>
+        <a href="#profil" class="btn-primary">Découvrir mon profil</a>
+        <a href="CV_JAVAID-Omer.pdf" class="btn-secondary" target="_blank">CV&nbsp;FR</a>
+        <a href="CV_JAVAID%20Omer%20Anglais.pdf" class="btn-secondary" target="_blank">CV&nbsp;EN</a>
       </div>
     </div>
   </section>
 
-  <!-- Profil Section -->
-  <section id="profil">
-    <h2 class="section-title">Profil</h2>
-    <div class="card" data-aos="fade-up">
-      <div class="profile-content">
-        <div class="profile-header">
-          <img src="photocv.jpg" alt="Omer JAVAID" style="width: 200px; border-radius: 50%; margin-bottom: 2rem;">
-          <h3>À propos</h3>
+  <!-- ======= PROFILE ======= -->
+  <section id="profil" class="profile-section" data-aos="fade-up">
+    <div class="profile-container">
+      <div class="profile-image">
+        <img src="photocv.jpg" alt="Photo de profil" loading="lazy">
+      </div>
+      <div class="profile-details">
+        <h2>À propos</h2>
+        <p>Cycle ingénieur <strong>ESIEA</strong> (Paris) après un BUT R&T. Passionné de <strong>cybersécurité</strong>,
+           <strong>cloud</strong> &amp; <strong>data</strong>. Je recherche une alternance 3&nbsp;ans pour relever des défis SI.</p>
+        <ul class="profile-infos">
+          <li><strong>Âge :</strong> 20&nbsp;ans</li>
+          <li><strong>Localisation :</strong> Champigny-sur-Marne (94)</li>
+          <li><strong>Tél :</strong> +33 6 64 40 17 46</li>
+          <li><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FORMATION + MAP ======= -->
+  <section id="formation" data-aos="fade-up">
+    <h2>Formation &amp; Lieux clés</h2>
+    <div class="edu-container">
+      <div class="edu-block" data-aos="fade-right">
+        <h3>ESIEA – École d’ingénieurs du numérique <small>– Paris, France</small></h3>
+        <p class="subtitle">Cycle ingénieur – CTI</p>
+        <p class="dates">Septembre 2025 – Juillet 2028</p>
+        <p>Consolidation avancée des compétences en informatique (systèmes, réseaux, développement) en vue d’une spécialisation en cybersécurité dès la 4ᵉ année.</p>
+      </div>
+
+      <div class="edu-block" data-aos="fade-left">
+        <h3>UPEC, IUT Créteil-Vitry</h3>
+        <p class="subtitle"><em>BUT Réseaux & Télécommunications (Spécialisation Cybersécurité)</em></p>
+        <p class="dates">Septembre 2023 – Juillet 2026</p>
+        <div class="courses">
+          <h4>Cours principaux</h4>
+          <ul>
+            <li>Réseaux avancés, Principes de cybersécurité, Architecture réseau</li>
+            <li>Cloud Computing, Gestion de bases de données (SQL/NoSQL), Scripts Shell</li>
+            <li>Développement Web (HTML, CSS, JS, PHP), Full-Stack (PHP, Python)</li>
+            <li>Télécommunications et transmission de signaux</li>
+          </ul>
         </div>
-        <div class="profile-details">
-          <p>Étudiant ingénieur à l'ESIEA spécialisé en cybersécurité et cloud computing. Passionné par les infrastructures sécurisées et les architectures cloud.</p>
-          <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem;">
-            <div class="info-item">
-              <h4>Localisation</h4>
-              <p>Champigny-sur-Marne (94)</p>
-            </div>
-            <div class="info-item">
-              <h4>Contact</h4>
-              <p>+33 6 64 40 17 46<br>omerjavaid2304@outlook.fr</p>
-            </div>
-          </div>
-        </div>
+      </div>
+
+      <div class="edu-block" data-aos="fade-right">
+        <h3>Lycée Langevin Wallon <small>– Champigny-sur-Marne, France</small></h3>
+        <p class="subtitle">Baccalauréat Général – Spécialités Mathématiques, Sciences de l’Ingénieur (SI) et Numérique & Sciences Informatiques (NSI)</p>
+        <p class="dates">Septembre 2020 – Juillet 2023</p>
+        <p>Formation axée sur les fondamentaux scientifiques et technologiques : modélisation, algorithmique, programmation Python/Arduino, conception de systèmes mécatroniques.</p>
       </div>
     </div>
   </section>
 
-  <!-- Compétences Section -->
-  <section id="competences">
-    <h2 class="section-title">Expertise</h2>
-    <div class="skills-grid">
-      <div class="skill-card" data-aos="zoom-in">
-        <i class="fas fa-shield-alt fa-3x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-        <h3>Cybersécurité</h3>
-        <p>Pentesting • Sécurité réseau • Cryptographie</p>
-      </div>
-      
-      <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
-        <i class="fas fa-cloud fa-3x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-        <h3>Cloud Computing</h3>
-        <p>AWS • Docker • Infrastructure as Code</p>
+  <!-- ======= LANGUES ======= -->
+  <section id="langues" data-aos="fade-up">
+    <h2>Langues</h2>
+    <div class="lang-list">
+      <span class="lang-tag">Français – C2</span><span class="lang-tag">Anglais – B2</span>
+      <span class="lang-tag">Urdu – C2</span><span class="lang-tag">Espagnol – A2</span>
+      <span class="lang-tag">Hindi – A2</span>
+    </div>
+  </section>
+
+  <!-- ======= COMPÉTENCES ======= -->
+  <section id="competences" class="skills-section" data-aos="fade-up">
+    <h2>Compétences</h2>
+    <div class="filter-btns">
+      <button class="active" data-filter="all">Toutes</button>
+      <button data-filter="reseau">Réseaux</button>
+      <button data-filter="dev">Développement</button>
+      <button data-filter="cloud">Cloud</button>
+      <button data-filter="data">Data/BI</button>
+      <button data-filter="gestion">Gestion</button>
+    </div>
+    <div class="skills-container" id="skillsGrid">
+      <div class="skill-block reseau">
+        <h3>Réseaux &amp; Sécurité</h3>
+        <ul>
+          <li><strong>Réseaux :</strong> TCP/IP, UDP, ICMP, HTTP/HTTPS, DNS, DHCP, FTP/SFTP, SSH, SNMP, SMTP, ARP, NAT, VLAN, ACL, QoS, HSRP, STP</li>
+          <li><strong>Routage :</strong> statique et dynamique (RIP, OSPF, BGP), redistribution, inter-VLAN, VRF, dot1q, commutation</li>
+          <li><strong>Sécurisation :</strong> VPN/IPsec, pare-feu (Fortigate, Cisco ASA), SSL/TLS</li>
+        </ul>
       </div>
 
-      <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
-        <i class="fas fa-network-wired fa-3x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-        <h3>Réseaux</h3>
-        <p>Architecture • Sécurisation • Optimisation</p>
+      <div class="skill-block dev">
+        <h3>Développement &amp; Programmation</h3>
+        <ul>
+          <li><strong>Langages :</strong> Python, Java, PHP, HTML/CSS, JavaScript</li>
+          <li><strong>Développement Web :</strong> Full-stack web, utilisation d’API, automatisation (scripts Bash)</li>
+          <li><strong>Bases de données :</strong> SQL (MySQL, LiveSQL)</li>
+        </ul>
+      </div>
+
+      <div class="skill-block cloud">
+        <h3>Cloud &amp; Virtualisation</h3>
+        <ul><li>AWS (IAM • EC2 • VPC)</li><li>Docker • CI/CD GitHub Actions</li><li>VMware • VirtualBox</li></ul>
+      </div>
+
+      <div class="skill-block data">
+        <h3>Data / Business Intelligence</h3>
+        <ul><li>Power BI (DAX, rapports)</li><li>Excel</li><li>ETL Talend • scripts Python</li></ul>
+      </div>
+
+      <div class="skill-block gestion">
+        <h3>Gestion de projet</h3>
+        <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication &amp; leadership</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- Expériences Section -->
-  <section id="experiences">
-    <h2 class="section-title">Parcours</h2>
+  <!-- ======= CERTIFICATIONS ======= -->
+  <section id="certifications" class="certifications-section" data-aos="fade-up">
+    <h2>Certifications</h2>
+    <div class="certs-grid">
+      <div class="cert-block">
+        <img src="assets/certs/aws.png" alt="AWS" loading="lazy">
+        <h3>AWS Fundamentals</h3>
+        <p>2025</p>
+      </div>
+
+      <div class="cert-block">
+        <img src="assets/certs/google.png" alt="Google" loading="lazy">
+        <h3>Google Cybersecurity</h3>
+        <p>2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= EXPÉRIENCES ======= -->
+  <section id="experiences" class="experience-section" data-aos="fade-up">
+    <h2>Expériences Professionnelles</h2>
     <div class="timeline">
-      <!-- Timeline items here -->
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" style="background: var(--bg-light);">
-    <h2 class="section-title">Contact</h2>
-    <div class="card" data-aos="fade-up" style="max-width: 800px; margin: 0 auto;">
-      <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-        <div class="contact-info">
-          <h3>Coordonnées</h3>
-          <p>Disponible pour des opportunités en alternance</p>
-          <div class="social-links" style="margin-top: 2rem;">
-            <a href="#" class="btn btn-outline" style="width: 100%; margin-bottom: 1rem;">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="#" class="btn btn-outline" style="width: 100%;">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-          </div>
+      <div class="t-item" data-aos="fade-right">
+        <div class="bubble">
+          <img src="assets/companies/sofiadis.png" alt="Sofiadis" loading="lazy">
+          <h3>Pentest Web – Sofiadis</h3>
+          <p class="dates">Avril 2025 – Juin 2025</p>
+          <ul>
+            <li>Analyse + de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest.</li>
+            <li>Rédaction d’un rapport de 20 pages présentant plus de 30 vulnérabilités techniques identifiées.</li>
+          </ul>
         </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <input type="text" placeholder="Nom" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Email" class="form-control">
-          </div>
-          <div class="form-group">
-            <textarea rows="5" placeholder="Message" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">
-            Envoyer le message
-          </button>
-        </form>
       </div>
     </div>
   </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- ======= CONTACT ======= -->
+  <section id="contact" class="contact-section" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p class="contact-intro">Un projet&nbsp;? Une opportunité&nbsp;? Parlons-en !</p>
+    <div class="contact-container">
+      <div class="contact-infos">
+        <p><strong>Localisation :</strong> Champigny-sur-Marne</p>
+        <p><strong>Tél :</strong> +33 6 64 40 17 46</p>
+        <p><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    © 2025 – Omer JAVAID
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: 'ease-in-out'
+    /* ----- Dark mode toggle ----- */
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
     });
   </script>
 </body>
