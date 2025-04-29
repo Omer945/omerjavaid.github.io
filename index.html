@@ -368,6 +368,134 @@ section {
 .skill-block.transmission {
   display: block;
 }
+/* ======= CONTACT ======= */
+.contact-section {
+  background: #f4f4f4;
+  padding: 4rem 2rem;
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contact-infos {
+  flex: 1;
+  min-width: 260px;
+  max-width: 450px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-infos p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.contact-infos .social-links {
+  margin-top: 1.5rem;
+}
+
+.contact-infos .social-link {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-infos .social-link:hover {
+  color: #0056b3;
+}
+
+.contact-infos .social-link i {
+  margin-right: 8px;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+/* ======= FOOTER ======= */
+.footer {
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-infos,
+  .contact-form {
+    width: 100%;
+  }
+}
+
 
   </style>
 </head>
@@ -654,20 +782,42 @@ section {
 
   <!-- ======= CONTACT ======= -->
   <section id="contact" class="contact-section" data-aos="fade-up">
-    <h2>Contact</h2>
-    <p class="contact-intro">Un projet&nbsp;? Une opportunité&nbsp;? Parlons-en !</p>
-    <div class="contact-container">
-      <div class="contact-infos">
-        <p><strong>Localisation :</strong> Champigny-sur-Marne</p>
-        <p><strong>Tél :</strong> +33 6 64 40 17 46</p>
-        <p><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></p>
+  <h2>Contact</h2>
+  <p class="contact-intro">Un projet&nbsp;? Une opportunité&nbsp;? Parlons-en !</p>
+  <div class="contact-container">
+    <div class="contact-infos">
+      <p><strong>Localisation :</strong> Champigny-sur-Marne</p>
+      <p><strong>Tél :</strong> +33 6 64 40 17 46</p>
+      <p><strong>Email :</strong> <a href="mailto:omerjavaid2304@outlook.fr">omerjavaid2304@outlook.fr</a></p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/omer-javaid-3b1787285/" class="social-link linkedin" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/YourGitHubUsername" class="social-link github" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
       </div>
     </div>
-  </section>
-  <footer class="footer">
-    © 2025 – Omer JAVAID
-  </footer>
-  <script>
+    <div class="contact-form">
+      <form method="POST" action="mailto:omerjavaid2304@outlook.fr" enctype="text/plain">
+        <label for="nom">Nom :</label>
+        <input id="nom" name="nom" required>
+
+        <label for="courriel">Email :</label>
+        <input id="courriel" name="courriel" type="email" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button class="btn-primary" type="submit">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  © 2025 – Omer JAVAID
+</footer>
+
     /* ----- Dark mode toggle ----- */
     const toggle = document.getElementById('themeToggle');
     toggle.addEventListener('click', () => {
