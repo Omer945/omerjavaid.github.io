@@ -562,6 +562,115 @@ section {
     padding: 0.8rem 1.6rem;
   }
 }
+/* ====== COMPÉTENCES ====== */
+#competences {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f4f4f4;
+  position: relative;
+}
+
+#competences h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+#competences h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.filter-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btns button {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--primary);
+  background: none;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-btns button:hover,
+.filter-btns button.active {
+  background-color: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.skill-block {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.skill-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.skill-block ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skill-block ul li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.skill-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.skill-block.transmission {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .skill-block {
+    width: 100%;
+  }
+}
 
 
   </style>
@@ -678,11 +787,11 @@ section {
     <button data-filter="cloud">Cloud</button>
     <button data-filter="data">Data/BI</button>
     <button data-filter="gestion">Gestion</button>
-    <button data-filter="transmission">Transmission</button> <!-- Nouveau bouton pour Transmission -->
+    <button data-filter="transmission">Transmission</button>
   </div>
   <div class="skills-container" id="skillsGrid">
     <div class="skill-block reseau">
-      <h3>Réseaux &amp; Sécurité</h3>
+      <h3>Réseaux & Sécurité</h3>
       <ul>
         <li><strong>Réseaux :</strong> TCP/IP, UDP, ICMP, HTTP/HTTPS, DNS, DHCP, FTP/SFTP, SSH, SNMP, SMTP, ARP, NAT, VLAN, ACL, QoS, HSRP, STP</li>
         <li><strong>Routage :</strong> statique et dynamique (RIP, OSPF, BGP), redistribution, inter-VLAN, VRF, dot1q, commutation</li>
@@ -691,7 +800,7 @@ section {
     </div>
 
     <div class="skill-block dev">
-      <h3>Développement &amp; Programmation</h3>
+      <h3>Développement & Programmation</h3>
       <ul>
         <li><strong>Langages :</strong> Python, Java, PHP, HTML/CSS, JavaScript</li>
         <li><strong>Développement Web :</strong> Full-stack web, utilisation d’API, automatisation (scripts Bash)</li>
@@ -700,7 +809,7 @@ section {
     </div>
 
     <div class="skill-block cloud">
-      <h3>Cloud &amp; Virtualisation</h3>
+      <h3>Cloud & Virtualisation</h3>
       <ul><li>AWS (IAM • EC2 • VPC)</li><li>Docker • CI/CD GitHub Actions</li><li>VMware • VirtualBox</li></ul>
     </div>
 
@@ -711,7 +820,7 @@ section {
 
     <div class="skill-block gestion">
       <h3>Gestion de projet</h3>
-      <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication &amp; leadership</li></ul>
+      <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication & leadership</li></ul>
     </div>
 
     <!-- Nouveau bloc Transmission de Données Numériques -->
@@ -724,6 +833,7 @@ section {
     </div>
   </div>
 </section>
+
 
   <!-- ======= CERTIFICATIONS ======= -->
   <section id="certifications" class="certifications-section" data-aos="fade-up">
@@ -925,6 +1035,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Ajoutez d'autres éléments à animer de manière similaire
+});
+// ScrollReveal animation
+document.addEventListener('DOMContentLoaded', () => {
+  ScrollReveal().reveal('#langues', {
+    duration: 800,
+    origin: 'bottom',
+    distance: '50px',
+    delay: 200
+  });
 });
 
 </script>
