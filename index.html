@@ -1395,7 +1395,76 @@ body.dark .contact-form textarea {
   top:25px;     /* on descend l’origine → plus de trait
                    qui remonte dans À PROPOS             */
 }
+body.dark{
+  --card-bg:#1e1e1e;
+  --section-bg:#1a1a1a;
+  --shadow-color:rgba(0,0,0,.6);
+}
 
+/* ---- surfaces principales ---- */
+body.dark .profile-card,
+body.dark .edu-content,
+body.dark .edu-item.current .edu-content,
+body.dark .timeline-item,
+body.dark .timeline-content,
+body.dark .cert-block,
+body.dark .contact-infos,
+body.dark .contact-form{
+  background:var(--card-bg)!important;
+  color:var(--dark-text);
+  box-shadow:0 6px 18px var(--shadow-color);
+}
+
+/* ---- titres / petits textes encore #333 ---- */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark li,
+body.dark label{
+  color:var(--dark-text);
+}
+
+/* ---- boutons ---- */
+body.dark .btn-primary{
+  background:#0d6efd;               /* bleu + lumineux      */
+  color:#fff;
+}
+body.dark .btn-secondary{
+  background:none;
+  color:#0d6efd;
+  border-color:#0d6efd;
+}
+body.dark .btn-secondary:hover{
+  background:#0d6efd;
+  color:#fff;
+}
+
+/* ---- formulaire ---- */
+body.dark .contact-form input,
+body.dark .contact-form textarea{
+  background:#2a2a2a;
+  color:#e6e6e6;
+  border:1px solid #555;
+}
+body.dark ::placeholder{color:#888;}
+
+/* ---- liens & icônes ---- */
+body.dark a{color:#0d8cff;}
+body.dark a:hover{text-decoration:underline;}
+body.dark i{color:#0d8cff;}
+
+/* ---- sections plain-background trop claires ---- */
+body.dark #langues,
+body.dark #competences,
+body.dark .experience-section,
+body.dark .profile-section,
+body.dark .contact-section,
+body.dark #formation,
+body.dark .certifications-section{
+  background:var(--section-bg);
+}
 
   </style>
 </head>
