@@ -570,16 +570,19 @@ section {
   position: relative;
 }
 
-/* Section de la timeline */
+/* Global settings for timeline */
 .experience-section {
   padding: 4rem 2rem;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Titre de la section */
+/* Title settings */
 .experience-section h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: var(--primary);
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 700;
@@ -595,20 +598,21 @@ section {
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background-color: var(--primary); /* Le même style de couleur */
+  background-color: var(--primary);
   border-radius: 10px;
 }
 
-/* Conteneur de la timeline */
+/* Container for the timeline */
 .timeline {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 50px;
   align-items: center;
-  position: relative;
+  width: 100%;
 }
 
-/* Flèches dans la timeline */
+/* Line in the middle of the timeline */
 .timeline:before {
   content: "";
   position: absolute;
@@ -616,50 +620,50 @@ section {
   left: 50%;
   height: 100%;
   width: 3px;
-  background: linear-gradient(180deg, #007bff, #00c1ff); /* La ligne entre les événements */
+  background: linear-gradient(180deg, #007bff, #00c1ff);
   z-index: -1;
   transform: translateX(-50%);
 }
 
-/* Item de la timeline */
+/* Individual timeline item style */
 .timeline-item {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
   width: 80%;
   max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease;
 }
 
 .timeline-item:hover {
   transform: translateY(-10px);
 }
 
-/* Ajout de la flèche au-dessus des éléments */
-.timeline-item:before {
-  content: '↓';
+/* Arrow added between the items */
+.timeline-item::before {
+  content: '→';
   position: absolute;
-  top: -15px;
-  font-size: 20px;
+  top: -30px;
+  font-size: 30px;
   color: var(--primary);
 }
 
-/* Points marquants */
-.timeline-item .company-logo {
-  width: 100px;
-  height: 100px;
+/* Icons or logos inside each timeline item */
+.company-logo {
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   margin-bottom: 15px;
-  border-radius: 50%; /* Des logos ronds pour ajouter un effet visuel */
+  border-radius: 50%;
 }
 
-/* Texte du titre et des dates */
+/* Title and date inside each timeline item */
 .timeline-item h3 {
   font-size: 1.4rem;
   color: #333;
@@ -678,9 +682,23 @@ section {
   line-height: 1.6;
 }
 
-/* Effet de survol et animation */
-.timeline-item:hover .timeline-content {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+/* For smaller screen sizes */
+@media (max-width: 768px) {
+  .timeline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-item {
+    width: 100%;
+  }
+
+  .timeline-item::before {
+    content: '↓'; /* Change arrow to downwards for smaller screens */
+    font-size: 30px;
+    color: var(--primary);
+    top: -10px;
+  }
 }
 
 /* Responsive */
