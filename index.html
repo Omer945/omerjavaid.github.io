@@ -26,6 +26,21 @@
   --dark-text:#e6e6e6;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
+  ul {
+    list-style-type: none;  /* Enlève les puces */
+    padding-left: 0;        /* Enlève le retrait des éléments */
+  }
+  
+  /* Cible les <ol> si tu en as aussi */
+  ol {
+    list-style-type: none;  /* Enlève les numéros de l'ordre */
+    padding-left: 0;        /* Enlève le retrait des éléments */
+  }
+  
+  /* Optionnel : si tu veux enlever le retrait global des <li> */
+  li {
+    margin: 0;
+  }
 
 * {
   margin: 0;
