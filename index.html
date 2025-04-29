@@ -1525,6 +1525,98 @@ body.dark .lang-tag:hover{
   background:#0d8cff;            /* cohérent avec les autres hovers */
   color:#fff;
 }
+/* =========================================================
+   COMPÉTENCES • look & feel + mode nuit
+   =========================================================*/
+
+/* grille */
+.skills-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+  margin-top:1.5rem;
+}
+
+/* carte */
+.skill-card{
+  background:#fff;
+  padding:2rem;
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  transition:transform .3s ease, box-shadow .3s ease;
+  opacity:0;                   /* animation d’apparition */
+  transform:translateY(20px);
+}
+
+.skill-card.visible{           /* classe ajoutée par le JS filtrage */
+  opacity:1;
+  transform:translateY(0);
+}
+
+.skill-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 12px 24px rgba(0,0,0,.12);
+}
+
+.skill-card h3{
+  font-size:1.3rem;
+  color:var(--primary);
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+
+.skill-card ul{
+  padding-left:1.2rem;
+  line-height:1.5;
+}
+
+/* filtres */
+.filter-btns{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1rem;
+  margin-bottom:2rem;
+}
+
+.filter-btns button{
+  padding:.6rem 1.4rem;
+  border:2px solid var(--primary);
+  background:none;
+  color:var(--primary);
+  font-weight:600;
+  border-radius:999px;
+  cursor:pointer;
+  transition:all .25s;
+}
+
+.filter-btns button:hover,
+.filter-btns button.active{
+  background:var(--primary);
+  color:#fff;
+  transform:translateY(-2px) scale(1.05);
+}
+
+/* ----- mode nuit ----- */
+body.dark .skill-card{
+  background:#1e1e1e;
+  box-shadow:0 8px 18px rgba(0,0,0,.4);
+}
+
+body.dark .skill-card h3{color:#0d8cff;}
+
+body.dark .filter-btns button{
+  border-color:#0d8cff;
+  color:#0d8cff;
+}
+
+body.dark .filter-btns button:hover,
+body.dark .filter-btns button.active{
+  background:#0d8cff;
+  color:#fff;
+}
 
   </style>
 </head>
@@ -1670,6 +1762,85 @@ body.dark .lang-tag:hover{
     <span class="lang-tag">Urdu – C2</span>
     <span class="lang-tag">Espagnol – A2</span>
     <span class="lang-tag">Hindi – A2</span>
+  </div>
+</section>
+<!-- ======= COMPÉTENCES ======= -->
+<section id="competences" class="skills-section" data-aos="fade-up">
+  <h2 class="section-title">Compétences</h2>
+
+  <!-- filtres -->
+  <div class="filter-btns">
+    <button class="active" data-filter="all">Toutes</button>
+    <button data-filter="reseau">Réseaux</button>
+    <button data-filter="dev">Développement</button>
+    <button data-filter="cloud">Cloud</button>
+    <button data-filter="data">Data / BI</button>
+    <button data-filter="gestion">Gestion</button>
+    <button data-filter="transmission">Transmission</button>
+  </div>
+
+  <!-- grille des compétences -->
+  <div class="skills-container" id="skillsGrid">
+    <!-- Réseaux -->
+    <div class="skill-card reseau">
+      <h3><i class="fa-solid fa-network-wired"></i> Réseaux &amp; Sécurité</h3>
+      <ul>
+        <li><strong>Protocoles :</strong> TCP/IP, HTTP/HTTPS, DNS, VLAN, ACL, QoS…</li>
+        <li><strong>Routage :</strong> RIP, OSPF, BGP, VRF, inter-VLAN</li>
+        <li><strong>Sécurisation :</strong> VPN / IPsec, pare-feux (Fortigate, ASA)</li>
+        <li><strong>Analyse :</strong> Wireshark, Packet Tracer, GNS3</li>
+        <li><strong>Pentest :</strong> Kali, Metasploit, IDS/IPS</li>
+      </ul>
+    </div>
+
+    <!-- Développement -->
+    <div class="skill-card dev">
+      <h3><i class="fa-solid fa-code"></i> Développement</h3>
+      <ul>
+        <li><strong>Langages :</strong> Python, Java, PHP, JS, HTML / CSS</li>
+        <li>Full-stack web, API, scripting Bash</li>
+        <li><strong>Bases de données :</strong> MySQL, LiveSQL</li>
+      </ul>
+    </div>
+
+    <!-- Cloud -->
+    <div class="skill-card cloud">
+      <h3><i class="fa-solid fa-cloud"></i> Cloud &amp; CI/CD</h3>
+      <ul>
+        <li>AWS (IAM, EC2, VPC)</li>
+        <li>Docker, GitHub Actions</li>
+        <li>VMware, VirtualBox</li>
+      </ul>
+    </div>
+
+    <!-- Data / BI -->
+    <div class="skill-card data">
+      <h3><i class="fa-solid fa-chart-pie"></i> Data / BI</h3>
+      <ul>
+        <li>Power BI (DAX, rapports)</li>
+        <li>Excel avancé, ETL Talend</li>
+        <li>Python pour l’analyse</li>
+      </ul>
+    </div>
+
+    <!-- Gestion de projet -->
+    <div class="skill-card gestion">
+      <h3><i class="fa-solid fa-people-group"></i> Gestion de projet</h3>
+      <ul>
+        <li>Agile / Scrum, Kanban</li>
+        <li>Jira, Trello, Confluence</li>
+        <li>Communication &amp; leadership</li>
+      </ul>
+    </div>
+
+    <!-- Transmission -->
+    <div class="skill-card transmission">
+      <h3><i class="fa-solid fa-wave-square"></i> Transmission</h3>
+      <ul>
+        <li>Wi-Fi, LoRa, 4G/5G, VoIP (IPBX, SIP)</li>
+        <li>AM, FM, QAM, GNU Radio, SDR</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -1913,6 +2084,8 @@ body.dark .lang-tag:hover{
     const defaultButton = document.querySelector(".filter-btns button.active");
     if (defaultButton) defaultButton.click();
   });
+   const skillBlocks = document.querySelectorAll(".skill-card");
+
 </script>
 </body>
 </html>
