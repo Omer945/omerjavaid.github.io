@@ -701,6 +701,79 @@ section {
   transform: translateY(0);
 }
 
+.certifications-section {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+}
+
+.certifications-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.cert-block {
+  background-color: #fff;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-block img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.cert-block h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cert-block p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.cert-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cert-block a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .certifications-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
   </style>
 </head>
@@ -807,62 +880,70 @@ section {
 
   <!-- ======= COMPÉTENCES ======= -->
   <!-- ======= COMPÉTENCES ======= -->
-<section id="competences" class="skills-section" data-aos="fade-up">
-  <h2>Compétences</h2>
-  <div class="filter-btns">
-    <button class="active" data-filter="all">Toutes</button>
-    <button data-filter="reseau">Réseaux</button>
-    <button data-filter="dev">Développement</button>
-    <button data-filter="cloud">Cloud</button>
-    <button data-filter="data">Data/BI</button>
-    <button data-filter="gestion">Gestion</button>
-    <button data-filter="transmission">Transmission</button>
-  </div>
-  <div class="skills-container" id="skillsGrid">
-    <div class="skill-block reseau">
-      <h3>Réseaux & Sécurité</h3>
-      <ul>
-        <li><strong>Réseaux :</strong> TCP/IP, UDP, ICMP, HTTP/HTTPS, DNS, DHCP, FTP/SFTP, SSH, SNMP, SMTP, ARP, NAT, VLAN, ACL, QoS, HSRP, STP</li>
-        <li><strong>Routage :</strong> statique et dynamique (RIP, OSPF, BGP), redistribution, inter-VLAN, VRF, dot1q, commutation</li>
-        <li><strong>Sécurisation :</strong> VPN/IPsec, pare-feu (Fortigate, Cisco ASA), SSL/TLS</li>
-      </ul>
-    </div>
+<section id="certifications" class="certifications-section" data-aos="fade-up">
+  <h2>Certifications</h2>
+  <div class="certifications-grid">
+    <a class="cert-block" href="assets/certs/certification_aws.png" target="_blank">
+      <img src="assets/certs/aws.png" alt="AWS Fundamentals">
+      <h3>AWS Fundamentals</h3>
+      <p>2025</p>
+    </a>
 
-    <div class="skill-block dev">
-      <h3>Développement & Programmation</h3>
-      <ul>
-        <li><strong>Langages :</strong> Python, Java, PHP, HTML/CSS, JavaScript</li>
-        <li><strong>Développement Web :</strong> Full-stack web, utilisation d’API, automatisation (scripts Bash)</li>
-        <li><strong>Bases de données :</strong> SQL (MySQL, LiveSQL)</li>
-      </ul>
-    </div>
+    <a class="cert-block" href="assets/certs/certification_google.png" target="_blank">
+      <img src="assets/certs/google.png" alt="Google Cybersecurity">
+      <h3>Google Cybersecurity</h3>
+      <p>2025</p>
+    </a>
 
-    <div class="skill-block cloud">
-      <h3>Cloud & Virtualisation</h3>
-      <ul><li>AWS (IAM • EC2 • VPC)</li><li>Docker • CI/CD GitHub Actions</li><li>VMware • VirtualBox</li></ul>
-    </div>
+    <a class="cert-block" href="https://www.credly.com/badges/bbf2976e-eb9a-4c77-8a56-0ce7bc0be392" target="_blank">
+      <img src="assets/certs/cisco.png" alt="Cisco ITN">
+      <h3>CCNA v7 ITN</h3>
+      <p>2024</p>
+    </a>
 
-    <div class="skill-block data">
-      <h3>Data / Business Intelligence</h3>
-      <ul><li>Power BI (DAX, rapports)</li><li>Excel</li><li>ETL Talend • scripts Python</li></ul>
-    </div>
+    <a class="cert-block" href="https://www.credly.com/badges/491acd4a-a560-4610-8e22-1d479135de7c" target="_blank">
+      <img src="assets/certs/cisco.png" alt="Cisco SRWE">
+      <h3>CCNA v7 SRWE</h3>
+      <p>2024</p>
+    </a>
 
-    <div class="skill-block gestion">
-      <h3>Gestion de projet</h3>
-      <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication & leadership</li></ul>
-    </div>
+    <a class="cert-block" href="assets/certs/cisco.png" target="_blank">
+      <img src="assets/certs/cisco.png" alt="Cisco ENSA">
+      <h3>CCNA v7 ENSA</h3>
+      <p>2025</p>
+    </a>
 
-    <!-- Nouveau bloc Transmission de Données Numériques -->
-    <div class="skill-block transmission" data-filter="transmission">
-      <h3>Transmission de Données Numériques</h3>
-      <ul>
-        <li>Transmission & réseaux sans fil : Wi-Fi, LoRa, 4G/5G, VoIP & téléphonie IP (IPBX, SIP)</li>
-        <li>Modulation & analyse du signal : AM, FM, QAM, Pluto SDR, GNU Radio</li>
-      </ul>
-    </div>
+    <a class="cert-block" href="assets/certs/ibm.png" target="_blank">
+      <img src="assets/certs/ibm.png" alt="IBM Cybersecurity">
+      <h3>IBM Introduction en Cybersécurité</h3>
+      <p>2025</p>
+    </a>
+
+    <a class="cert-block" href="assets/certs/ansii.png" target="_blank">
+      <img src="assets/certs/ansii.png" alt="SecNumAcadémie (ANSSI)">
+      <h3>SecNumAcadémie (ANSSI)</h3>
+      <p>2024</p>
+    </a>
+
+    <a class="cert-block" href="assets/certs/rootme.png" target="_blank">
+      <img src="assets/certs/rootme.png" alt="Root-Me 1300pts">
+      <h3>Root-Me — 1300 pts</h3>
+      <p>2024</p>
+    </a>
+
+    <a class="cert-block" href="assets/certs/pix.png" target="_blank">
+      <img src="assets/certs/pix.png" alt="Pix Certification">
+      <h3>Certification Pix</h3>
+      <p>2023</p>
+    </a>
+
+    <a class="cert-block" href="assets/certs/bafa.png" target="_blank">
+      <img src="assets/certs/bafa.png" alt="BAFA">
+      <h3>BAFA</h3>
+      <p>2022</p>
+    </a>
   </div>
 </section>
-
 
   <!-- ======= CERTIFICATIONS ======= -->
   <section id="certifications" class="certifications-section" data-aos="fade-up">
