@@ -511,6 +511,12 @@ body.dark .bubble {
   margin-right: 8px;
   vertical-align: middle;
 }
+.edu-logo {
+  width: 40px; /* Ajuste la taille du logo */
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
 
 [data-aos] {
   opacity: 0;
@@ -520,6 +526,24 @@ body.dark .bubble {
 [data-aos].aos-animate {
   opacity: 1;
 }
+    .skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btns button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid var(--primary);
+  background: none;
+  color: var(--primary);
+  margin: 0.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 
   </style>
 </head>
@@ -712,6 +736,13 @@ body.dark .bubble {
         <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication &amp; leadership</li></ul>
       </div>
     </div>
+    <div class="skill-block transmission">
+  <h3>Transmission de Données Numériques</h3>
+  <ul>
+    <li>Transmission & réseaux sans fil : Wi-Fi, LoRa, 4G/5G, VoIP & téléphonie IP (IPBX, SIP)</li>
+    <li>Modulation & analyse du signal : AM, FM, QAM, Pluto SDR, GNU Radio</li>
+  </ul>
+</div>
   </section>
 
   <!-- ======= CERTIFICATIONS ======= -->
@@ -762,6 +793,7 @@ body.dark .bubble {
       </div>
 
       <div class="cert-block">
+        <img src="assets/certs/rootme.png" alt="ROOTME" loading="lazy">
         <h3>Root-Me — 1300 pts</h3>
         <p>2024</p>
       </div>
