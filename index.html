@@ -845,6 +845,95 @@ section {
     grid-template-columns: 1fr;
   }
 }
+.experience-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.experience-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  margin-left: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.timeline-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card img.company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.timeline-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.timeline-card .dates {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.timeline-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.timeline-item:hover .timeline-card {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-item {
+    margin-left: 0;
+    padding-left: 20px;
+  }
+
+  .timeline-card {
+    max-width: 100%;
+  }
+}
 
   </style>
 </head>
@@ -1019,46 +1108,60 @@ section {
   <!-- ======= EXPÉRIENCES ======= -->
  <section id="experiences" class="experience-section" data-aos="fade-up">
   <h2>Expériences Professionnelles</h2>
-  <div class="experience-cards">
-    <div class="experience-card">
-      <img src="assets/companies/sofiadis.png" alt="Sofiadis" class="company-logo">
-      <h3>Pentest Web – Sofiadis</h3>
-      <p class="dates">Avril 2025 – Juin 2025</p>
-      <p>
-        Analyse de plus de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest (Nikto, SQLMap, WhatWeb, FFUF, Dirsearch, Curl).
-      </p>
-      <p>Rédaction d’un rapport de 20 pages présentant plus de 30 vulnérabilités techniques identifiées et leurs recommandations.</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img src="assets/companies/sofiadis.png" alt="Sofiadis" class="company-logo">
+        <h3>Pentest Web – Sofiadis</h3>
+        <p class="dates">Avril 2025 – Juin 2025</p>
+        <p>Analyse de plus de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest (Nikto, SQLMap, WhatWeb, FFUF, Dirsearch, Curl).</p>
+        <p>Rédaction d’un rapport de 20 pages présentant plus de 30 vulnérabilités techniques identifiées et leurs recommandations.</p>
+      </div>
     </div>
 
-    <div class="experience-card">
-      <img src="assets/companies/basicfit.png" alt="Basic Fit" class="company-logo">
-      <h3>Réceptionniste – Basic Fit</h3>
-      <p class="dates">Juin 2024 – Juil. 2024</p>
-      <p>Accueil et accompagnement des adhérents. Gestion des réclamations et de la sécurité dans le centre.</p>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img src="assets/companies/basicfit.png" alt="Basic Fit" class="company-logo">
+        <h3>Réceptionniste – Basic Fit</h3>
+        <p class="dates">Juin 2024 – Juil. 2024</p>
+        <p>Accueil et accompagnement des adhérents. Gestion des réclamations et de la sécurité dans le centre.</p>
+      </div>
     </div>
 
-    <div class="experience-card">
-      <img src="assets/companies/mairie_champigny.png" alt="Mairie de Champigny" class="company-logo">
-      <h3>ENGAGEMENT CITOYEN SERVICE CIVIQUE – Mairie de Champigny</h3>
-      <p class="dates">Sept. 2023 – Fév. 2023</p>
-      <p>Accompagnement hebdomadaire de 10 à 15 lycéens en SNT et NSI. Formation de plus de 60 séances dispensées sur 2 ans pour renforcer les bases en informatique et mathématiques.</p>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img src="assets/companies/mairie_champigny.png" alt="Mairie de Champigny" class="company-logo">
+        <h3>ENGAGEMENT CITOYEN SERVICE CIVIQUE – Mairie de Champigny</h3>
+        <p class="dates">Sept. 2023 – Fév. 2023</p>
+        <p>Accompagnement hebdomadaire de 10 à 15 lycéens en SNT et NSI. Formation de plus de 60 séances dispensées sur 2 ans pour renforcer les bases en informatique et mathématiques.</p>
+      </div>
     </div>
 
-    <div class="experience-card">
-      <img src="assets/companies/simon_veil.png" alt="Simone Veil" class="company-logo">
-      <h3>Animateur – Centre de loisirs</h3>
-      <p class="dates">Juil. 2022 – Août 2022</p>
-      <p>Encadrement d'enfants âgés de 6 à 12 ans. Gestion de la sécurité, de la cohésion de groupe et du respect des règles.</p>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img src="assets/companies/simon_veil.png" alt="Simone Veil" class="company-logo">
+        <h3>Animateur – Centre de loisirs</h3>
+        <p class="dates">Juil. 2022 – Août 2022</p>
+        <p>Encadrement d'enfants âgés de 6 à 12 ans. Gestion de la sécurité, de la cohésion de groupe et du respect des règles.</p>
+      </div>
     </div>
 
-    <div class="experience-card">
-      <img src="assets/companies/inventive.png" alt="Inventive Informatique" class="company-logo">
-      <h3>Stagiaire IT – Inventive Informatique</h3>
-      <p class="dates">Déc. 2020 – Janv. 2021</p>
-      <p>Installation de postes et réseaux pour l'entreprise. Participation à l'amélioration des infrastructures IT.</p>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img src="assets/companies/inventive.png" alt="Inventive Informatique" class="company-logo">
+        <h3>Stagiaire IT – Inventive Informatique</h3>
+        <p class="dates">Déc. 2020 – Janv. 2021</p>
+        <p>Installation de postes et réseaux pour l'entreprise. Participation à l'amélioration des infrastructures IT.</p>
+      </div>
     </div>
   </div>
 </section>
+
 
 
   <!-- ======= CONTACT ======= -->
