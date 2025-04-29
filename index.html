@@ -1563,55 +1563,56 @@ body.dark .contact-form textarea {
 </footer>
 
 <!-- Dark mode toggle & AOS init -->
+<!-- Scripts nécessaires -->
+<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.14"></script>
+
 <script>
-  // Dark mode toggle functionality
-const toggle = document.getElementById('themeToggle');
+// === 1. Mode sombre ===
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  toggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    document.body.classList.toggle('dark');
+    toggle.innerHTML = document.body.classList.contains('dark')
+      ? '<i class="fa-solid fa-sun"></i>'
+      : '<i class="fa-solid fa-moon"></i>';
+  });
 });
 
+// === 2. Typed.js (animation du texte dans la bannière) ===
+document.addEventListener('DOMContentLoaded', function () {
+  var options = {
+    strings: ["Cybersécurité", "Innovation", "Cloud", "Développement Web"],
+    typeSpeed: 100,
+    backSpeed: 50,
+    backDelay: 1000,
+    startDelay: 500,
+    loop: true
+  };
+  new Typed("#typed", options);
+});
 
-  // AOS initialization
-  // ScrollReveal initialization
-document.addEventListener('DOMContentLoaded', () => {
+// === 3. ScrollReveal (animations de défilement) ===
+document.addEventListener('DOMContentLoaded', function () {
   ScrollReveal().reveal('#accueil', {
-    duration: 800,
-    origin: 'bottom',
-    distance: '50px',
+    duration: 800, origin: 'bottom', distance: '50px'
   });
-
   ScrollReveal().reveal('#profil', {
-    duration: 800,
-    origin: 'left',
-    distance: '100px',
+    duration: 800, origin: 'left', distance: '100px'
   });
-
   ScrollReveal().reveal('#formation', {
-    duration: 800,
-    origin: 'right',
-    distance: '100px',
+    duration: 800, origin: 'right', distance: '100px'
   });
-
   ScrollReveal().reveal('#competences', {
-    duration: 800,
-    origin: 'bottom',
-    distance: '50px',
+    duration: 800, origin: 'bottom', distance: '50px'
   });
-
-  // Ajoutez d'autres éléments à animer de manière similaire
-});
-// ScrollReveal animation
-document.addEventListener('DOMContentLoaded', () => {
   ScrollReveal().reveal('#langues', {
-    duration: 800,
-    origin: 'bottom',
-    distance: '50px',
-    delay: 200
+    duration: 800, origin: 'bottom', distance: '50px', delay: 200
   });
 });
-// Script pour le filtrage des compétences
-document.addEventListener("DOMContentLoaded", function () {
+
+// === 4. Filtrage des compétences ===
+document.addEventListener('DOMContentLoaded', function () {
   const filterButtons = document.querySelectorAll(".filter-btns button");
   const skillBlocks = document.querySelectorAll(".skill-block");
 
@@ -1619,51 +1620,24 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       const filter = this.getAttribute("data-filter");
 
-      // Ajout de la classe 'active' au bouton cliqué
       filterButtons.forEach(btn => btn.classList.remove("active"));
       this.classList.add("active");
 
-      // Cacher tous les blocs de compétence avant d'afficher ceux du filtre
-      skillBlocks.forEach(block => {
-        block.classList.remove("visible");
-      });
+      skillBlocks.forEach(block => block.classList.remove("visible"));
 
-      // Affichage des compétences selon le filtre
       if (filter === "all") {
-        // Si le filtre "all" est sélectionné, on affiche tous les blocs
-        skillBlocks.forEach(block => {
-          block.classList.add("visible");
-        });
+        skillBlocks.forEach(block => block.classList.add("visible"));
       } else {
-        // Si un filtre spécifique est sélectionné, on affiche uniquement les blocs correspondants
-        const filteredBlocks = document.querySelectorAll(`.skill-block.${filter}`);
-        filteredBlocks.forEach(block => {
-          block.classList.add("visible");
-        });
+        document.querySelectorAll(`.skill-block.${filter}`).forEach(block =>
+          block.classList.add("visible")
+        );
       }
     });
   });
 
-  // Par défaut, afficher toutes les compétences au chargement
-  document.querySelector(".filter-btns button.active").click();
+  const activeBtn = document.querySelector(".filter-btns button.active");
+  if (activeBtn) activeBtn.click();
 });
-  <!-- Ajouter cette ligne AVANT ton script typed -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.14"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var options = {
-      strings: ["Cybersécurité", "Innovation", "Cloud", "Développement Web"],
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 1000,
-      startDelay: 500,
-      loop: true
-    };
-    new Typed("#typed", options);
-  });
 </script>
-
-
 </body>
 </html>
