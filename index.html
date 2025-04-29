@@ -1497,6 +1497,34 @@ body.dark .btn-project {
   background: #0d6efd;
   color: #fff;
 }
+/* =========================================================
+   VISIBILITÉ DES BOUTONS SECONDAIRES & TAGS EN MODE NUIT
+   =========================================================*/
+
+/* --- 1. Boutons CV FR / CV EN --------------------------- */
+body.dark .btn-secondary{
+  color:#0d8cff;                 /* texte bleu lisible         */
+  border-color:#0d8cff;          /* contour bleu               */
+  background:rgba(13,140,255,.12);/* léger voile bleu           */
+}
+
+body.dark .btn-secondary:hover{
+  background:#0d8cff;            /* plein bleu au survol        */
+  color:#fff;
+}
+
+/* --- 2. Pastilles LANGUES ------------------------------- */
+body.dark .lang-tag{
+  background:#222;               /* gris très sombre            */
+  color:var(--dark-text);        /* texte clair (#e6e6e6)       */
+  border:1px solid #444;         /* fin contour                 */
+  box-shadow:0 4px 10px rgba(0,0,0,.4);
+}
+
+body.dark .lang-tag:hover{
+  background:#0d8cff;            /* cohérent avec les autres hovers */
+  color:#fff;
+}
 
   </style>
 </head>
@@ -1527,8 +1555,8 @@ body.dark .btn-project {
     <p>Étudiant ingénieur ESIEA • École Supérieure d'Informatique Électronique Automatique </p>
     <div class="hero-buttons">
       <a href="#profil" class="btn-primary">Découvrir mon profil</a>
-      <a href="CV_JAVAID-Omer.pdf" class="btn-secondary" target="_blank">CV&nbsp;FR</a>
-      <a href="CV_JAVAID%20Omer%20Anglais.pdf" class="btn-secondary" target="_blank">CV&nbsp;EN</a>
+      <a href="CV_JAVAID-Omer.pdf" class="btn-secondary" target="_blank">CV&nbsp;FRANÇAIS</a>
+      <a href="CV_JAVAID%20Omer%20Anglais.pdf" class="btn-secondary" target="_blank">CV&nbsp;ANGLAIS</a>
     </div>
   </div>
 </section>
