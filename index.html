@@ -243,7 +243,47 @@ h2 {
   max-width: 1200px;
   margin: auto;
 }
+ .btn-project {
+    display: inline-block;
+    background-color: #007BFF; /* Couleur bleue */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
 
+  .btn-project:hover {
+    background-color: #0056b3; /* Couleur bleue plus foncée au survol */
+    transform: translateY(-5px); /* Léger mouvement vers le haut */
+  }
+
+  .btn-project::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .btn-project:hover::before {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+  }
+
+  .btn-project:active {
+    transform: translateY(0); /* Animation active pour un effet pression */
+  }
 .edu-block {
   background: var(--card-bg);
   padding: 1.5rem;
@@ -652,35 +692,33 @@ body.dark .bubble {
         </ul>
       </div>
 
-      <div class="projects">
-        <h4>Projets</h4>
-        <ul class="project-list">
-          <li>
-            Création d'un site e-commerce sécurisé avec <strong>authentification SQL</strong>, 
-            <strong>panier</strong> et <strong>paiement</strong> en <strong>PHP</strong> et <strong>JavaScript</strong>
-            <a href="sae23.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
-          </li>
-          <li>
-            Conception d'une <strong>infrastructure réseau multi-site sécurisée</strong> avec 
-            <strong>routage</strong>, <strong>commutation</strong> et modélisation de <strong>topologies</strong>,
-            intégrant <strong>VLANs</strong>, <strong>pare-feux</strong>, <strong>VPN</strong> et <strong>QoS</strong>
-            <a href="saereseau.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
-          </li>
-          <li>
-            Développement d'une <strong>application de chat sécurisé</strong> (<strong>Java/SQL</strong>) 
-            avec <strong>SSL/TLS</strong>, utilisant <strong>AWT</strong>, <strong>Swing</strong> et <strong>JDBC</strong> 
-            pour l'interface graphique et le stockage des messages
-            <a href="saejava.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
-          </li>
-          <li>
-            Réalisation d'un <strong>système de données LoRa</strong> avec <strong>SDR</strong> et <strong>Flask</strong> 
-            pour l'analyse temps réel des signaux
-            <a href="sea301.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
+     <div class="projects">
+  <h4>Projets</h4>
+  <ul class="project-list">
+    <li>
+      Création d'un site e-commerce sécurisé avec <strong>authentification SQL</strong>, 
+      <strong>panier</strong> et <strong>paiement</strong> en <strong>PHP</strong> et <strong>JavaScript</strong>
+      <a href="sae23.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+    </li>
+    <li>
+      Conception d'une <strong>infrastructure réseau multi-site sécurisée</strong> avec 
+      <strong>routage</strong>, <strong>commutation</strong> et modélisation de <strong>topologies</strong>,
+      intégrant <strong>VLANs</strong>, <strong>pare-feux</strong>, <strong>VPN</strong> et <strong>QoS</strong>
+      <a href="saereseau.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+    </li>
+    <li>
+      Développement d'une <strong>application de chat sécurisé</strong> (<strong>Java/SQL</strong>) 
+      avec <strong>SSL/TLS</strong>, utilisant <strong>AWT</strong>, <strong>Swing</strong> et <strong>JDBC</strong> 
+      pour l'interface graphique et le stockage des messages
+      <a href="saejava.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+    </li>
+    <li>
+      Réalisation d'un <strong>système de données LoRa</strong> avec <strong>SDR</strong> et <strong>Flask</strong> 
+      pour l'analyse temps réel des signaux
+      <a href="sea301.pdf" class="btn-project" target="_blank" rel="noopener noreferrer">Voir le PDF</a>
+    </li>
+  </ul>
+</div>
     <div class="edu-block" data-aos="fade-right">
       <h3>
         <img src="assets/schools/lycee.png" alt="Lycée Logo" class="edu-logo" />
