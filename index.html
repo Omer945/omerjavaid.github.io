@@ -321,6 +321,54 @@ section {
     align-items: center;
   }
 }
+/* Filtrage des compétences */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.skill-block {
+  width: 48%; /* Ajuste la largeur des éléments pour qu'ils s'affichent côte à côte */
+  margin-bottom: 20px;
+}
+
+.filter-btns button.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.filter-btns button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #f4f4f4;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-btns button:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.skill-block {
+  display: none;
+}
+
+.skill-block[data-filter="all"],
+.skill-block[data-filter="reseau"],
+.skill-block[data-filter="dev"],
+.skill-block[data-filter="cloud"],
+.skill-block[data-filter="data"],
+.skill-block[data-filter="gestion"],
+.skill-block[data-filter="transmission"] {
+  display: block;
+}
+
+.skill-block.transmission {
+  display: block;
+}
+
   </style>
 </head>
 <body>
@@ -422,72 +470,133 @@ section {
   </section>
 
   <!-- ======= COMPÉTENCES ======= -->
-  <section id="competences" class="skills-section" data-aos="fade-up">
-    <h2>Compétences</h2>
-    <div class="filter-btns">
-      <button class="active" data-filter="all">Toutes</button>
-      <button data-filter="reseau">Réseaux</button>
-      <button data-filter="dev">Développement</button>
-      <button data-filter="cloud">Cloud</button>
-      <button data-filter="data">Data/BI</button>
-      <button data-filter="gestion">Gestion</button>
+  <!-- ======= COMPÉTENCES ======= -->
+<section id="competences" class="skills-section" data-aos="fade-up">
+  <h2>Compétences</h2>
+  <div class="filter-btns">
+    <button class="active" data-filter="all">Toutes</button>
+    <button data-filter="reseau">Réseaux</button>
+    <button data-filter="dev">Développement</button>
+    <button data-filter="cloud">Cloud</button>
+    <button data-filter="data">Data/BI</button>
+    <button data-filter="gestion">Gestion</button>
+    <button data-filter="transmission">Transmission</button> <!-- Nouveau bouton pour Transmission -->
+  </div>
+  <div class="skills-container" id="skillsGrid">
+    <div class="skill-block reseau">
+      <h3>Réseaux &amp; Sécurité</h3>
+      <ul>
+        <li><strong>Réseaux :</strong> TCP/IP, UDP, ICMP, HTTP/HTTPS, DNS, DHCP, FTP/SFTP, SSH, SNMP, SMTP, ARP, NAT, VLAN, ACL, QoS, HSRP, STP</li>
+        <li><strong>Routage :</strong> statique et dynamique (RIP, OSPF, BGP), redistribution, inter-VLAN, VRF, dot1q, commutation</li>
+        <li><strong>Sécurisation :</strong> VPN/IPsec, pare-feu (Fortigate, Cisco ASA), SSL/TLS</li>
+      </ul>
     </div>
-    <div class="skills-container" id="skillsGrid">
-      <div class="skill-block reseau">
-        <h3>Réseaux &amp; Sécurité</h3>
-        <ul>
-          <li><strong>Réseaux :</strong> TCP/IP, UDP, ICMP, HTTP/HTTPS, DNS, DHCP, FTP/SFTP, SSH, SNMP, SMTP, ARP, NAT, VLAN, ACL, QoS, HSRP, STP</li>
-          <li><strong>Routage :</strong> statique et dynamique (RIP, OSPF, BGP), redistribution, inter-VLAN, VRF, dot1q, commutation</li>
-          <li><strong>Sécurisation :</strong> VPN/IPsec, pare-feu (Fortigate, Cisco ASA), SSL/TLS</li>
-        </ul>
-      </div>
 
-      <div class="skill-block dev">
-        <h3>Développement &amp; Programmation</h3>
-        <ul>
-          <li><strong>Langages :</strong> Python, Java, PHP, HTML/CSS, JavaScript</li>
-          <li><strong>Développement Web :</strong> Full-stack web, utilisation d’API, automatisation (scripts Bash)</li>
-          <li><strong>Bases de données :</strong> SQL (MySQL, LiveSQL)</li>
-        </ul>
-      </div>
-
-      <div class="skill-block cloud">
-        <h3>Cloud &amp; Virtualisation</h3>
-        <ul><li>AWS (IAM • EC2 • VPC)</li><li>Docker • CI/CD GitHub Actions</li><li>VMware • VirtualBox</li></ul>
-      </div>
-
-      <div class="skill-block data">
-        <h3>Data / Business Intelligence</h3>
-        <ul><li>Power BI (DAX, rapports)</li><li>Excel</li><li>ETL Talend • scripts Python</li></ul>
-      </div>
-
-      <div class="skill-block gestion">
-        <h3>Gestion de projet</h3>
-        <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication &amp; leadership</li></ul>
-      </div>
+    <div class="skill-block dev">
+      <h3>Développement &amp; Programmation</h3>
+      <ul>
+        <li><strong>Langages :</strong> Python, Java, PHP, HTML/CSS, JavaScript</li>
+        <li><strong>Développement Web :</strong> Full-stack web, utilisation d’API, automatisation (scripts Bash)</li>
+        <li><strong>Bases de données :</strong> SQL (MySQL, LiveSQL)</li>
+      </ul>
     </div>
-  </section>
+
+    <div class="skill-block cloud">
+      <h3>Cloud &amp; Virtualisation</h3>
+      <ul><li>AWS (IAM • EC2 • VPC)</li><li>Docker • CI/CD GitHub Actions</li><li>VMware • VirtualBox</li></ul>
+    </div>
+
+    <div class="skill-block data">
+      <h3>Data / Business Intelligence</h3>
+      <ul><li>Power BI (DAX, rapports)</li><li>Excel</li><li>ETL Talend • scripts Python</li></ul>
+    </div>
+
+    <div class="skill-block gestion">
+      <h3>Gestion de projet</h3>
+      <ul><li>Agile/Scrum • Kanban</li><li>Jira • Trello • Confluence</li><li>Communication &amp; leadership</li></ul>
+    </div>
+
+    <!-- Nouveau bloc Transmission de Données Numériques -->
+    <div class="skill-block transmission" data-filter="transmission">
+      <h3>Transmission de Données Numériques</h3>
+      <ul>
+        <li>Transmission & réseaux sans fil : Wi-Fi, LoRa, 4G/5G, VoIP & téléphonie IP (IPBX, SIP)</li>
+        <li>Modulation & analyse du signal : AM, FM, QAM, Pluto SDR, GNU Radio</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
   <!-- ======= CERTIFICATIONS ======= -->
   <section id="certifications" class="certifications-section" data-aos="fade-up">
     <h2>Certifications</h2>
     <div class="certs-grid">
-      <div class="cert-block">
+
+      <a class="cert-block" href="assets/certs/certification_aws.png" target="_blank">
         <img src="assets/certs/aws.png" alt="AWS" loading="lazy">
         <h3>AWS Fundamentals</h3>
+        <p>2025</p>
+      </a>
+
+      <a class="cert-block" href="assets/certs/certification_google.png" target="_blank">
+        <img src="assets/certs/google.png" alt="Google" loading="lazy">
+        <h3>Google Cybersecurity</h3>
+        <p>2025</p>
+      </a>
+
+      <a class="cert-block" href="https://www.credly.com/badges/bbf2976e-eb9a-4c77-8a56-0ce7bc0be392" target="_blank">
+        <img src="assets/certs/cisco.png" alt="Cisco ITN" loading="lazy">
+        <h3>CCNA v7 ITN</h3>
+        <p>2024</p>
+      </a>
+
+      <a class="cert-block" href="https://www.credly.com/badges/491acd4a-a560-4610-8e22-1d479135de7c" target="_blank">
+        <img src="assets/certs/cisco.png" alt="Cisco SRWE" loading="lazy">
+        <h3>CCNA v7 SRWE</h3>
+        <p>2024</p>
+      </a>
+
+      <div class="cert-block">
+        <img src="assets/certs/cisco.png" alt="Cisco ENSA" loading="lazy">
+        <h3>CCNA v7 ENSA</h3>
         <p>2025</p>
       </div>
 
       <div class="cert-block">
-        <img src="assets/certs/google.png" alt="Google" loading="lazy">
-        <h3>Google Cybersecurity</h3>
+        <img src="assets/certs/ibm.png" alt="IBM" loading="lazy">
+        <h3>IBM Introduction en Cybersécurité</h3>
         <p>2025</p>
       </div>
+
+      <div class="cert-block">
+        <img src="assets/certs/ansii.png" alt="ANSII" loading="lazy">
+        <h3>SecNumAcadémie (ANSSI)</h3>
+        <p>2024</p>
+      </div>
+
+      <div class="cert-block">
+        <img src="assets/certs/rootme.png" alt="ROOTME" loading="lazy">
+        <h3>Root-Me — 1300 pts</h3>
+        <p>2024</p>
+      </div>
+
+      <div class="cert-block">
+        <img src="assets/certs/pix.png" alt="Pix" loading="lazy">
+        <h3>Certification Pix</h3>
+        <p>2023</p>
+      </div>
+
+      <div class="cert-block">
+        <img src="assets/certs/bafa.png" alt="BAFA" loading="lazy">
+        <h3>BAFA</h3>
+        <p>2022</p>
+      </div>
+
     </div>
   </section>
 
   <!-- ======= EXPÉRIENCES ======= -->
-  <section id="experiences" class="experience-section" data-aos="fade-up">
+ <section id="experiences" class="experience-section" data-aos="fade-up">
     <h2>Expériences Professionnelles</h2>
     <div class="timeline">
       <div class="t-item" data-aos="fade-right">
@@ -496,9 +605,48 @@ section {
           <h3>Pentest Web – Sofiadis</h3>
           <p class="dates">Avril 2025 – Juin 2025</p>
           <ul>
-            <li>Analyse + de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest.</li>
-            <li>Rédaction d’un rapport de 20 pages présentant plus de 30 vulnérabilités techniques identifiées.</li>
+            <li>Analyse + de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest (Nikto, SQLMap, WhatWeb, FFUF, Dirsearch, Curl).</li>
+            <li>Rédaction d’un rapport de 20 pages présentant + de 30 vulnérabilités techniques identifiées et leurs recommandations.</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-left">
+        <div class="bubble">
+          <img src="assets/companies/basicfit.png" alt="Basic Fit" loading="lazy">
+          <h3>Réceptionniste – Basic Fit</h3>
+          <p class="dates">Juin 2024 – Juil. 2024</p>
+          <ul><li>Accueil &amp; accompagnement adhérents</li><li>Gestion réclamations &amp; sécurité</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-right">
+        <div class="bubble">
+          <img src="assets/companies/mairie_champigny.png" alt="Mairie" loading="lazy">
+          <h3>ENGAGEMENT CITOYEN SERVICE CIVIQUE – Mairie de Champigny</h3>
+          <p class="dates">Sept. 2023 – Fév. 2023</p>
+          <ul>
+            <li>Accompagnement hebdomadaire de 10 à 15 lycéens en SNT et NSI</li>
+            <li>+60 séances dispensées sur 2 ans pour renforcer les bases en informatique et mathématiques</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-left">
+        <div class="bubble">
+          <img src="assets/companies/simon_veil.png" alt="Centre loisirs" loading="lazy">
+          <h3>Animateur – Centre de loisirs</h3>
+          <p class="dates">Juil. 2022 – Août 2022</p>
+          <ul><li>Encadrement enfants 6-12 ans</li><li>Gestion de la sécurité, de la cohésion de groupe et du respect des règles</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item" data-aos="fade-right">
+        <div class="bubble">
+          <img src="assets/companies/inventive.png" alt="Inventive" loading="lazy">
+          <h3>Stagiaire IT – Inventive Informatique</h3>
+          <p class="dates">Déc. 2020 – Janv. 2021</p>
+          <ul><li>Installation postes &amp; réseau</li></ul>
         </div>
       </div>
     </div>
@@ -516,13 +664,9 @@ section {
       </div>
     </div>
   </section>
-
-  <!-- ======= FOOTER ======= -->
   <footer class="footer">
     © 2025 – Omer JAVAID
   </footer>
-
-  <!-- ========== SCRIPTS ========== -->
   <script>
     /* ----- Dark mode toggle ----- */
     const toggle = document.getElementById('themeToggle');
