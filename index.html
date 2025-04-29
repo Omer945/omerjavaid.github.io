@@ -570,7 +570,7 @@ section {
   position: relative;
 }
 
-#competences h2 {
+.experience-section h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-weight: 700;
@@ -579,13 +579,18 @@ section {
   letter-spacing: 2px;
   position: relative;
   display: inline-block;
+  text-align: center; /* Centrer le texte */
+  width: 100%; /* S'assurer qu'il occupe toute la largeur */
+  margin-left: 0;
+  margin-right: 0; /* Supprimer les marges latérales */
 }
 
-#competences h2::after {
+.experience-section h2::after {
   content: "";
   position: absolute;
   bottom: -10px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Centrer la ligne sous le titre */
   width: 50px;
   height: 4px;
   background-color: var(--primary);
