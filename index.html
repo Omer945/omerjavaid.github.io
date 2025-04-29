@@ -570,19 +570,21 @@ section {
   position: relative;
 }
 
+/* Section de la timeline */
+.experience-section {
+  padding: 4rem 2rem;
+  background-color: #f4f4f4;
+}
+
+/* Titre de la section */
 .experience-section h2 {
   font-size: 2.5rem;
+  color: #333;
+  text-align: center;
   margin-bottom: 2rem;
   font-weight: 700;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 2px;
   position: relative;
-  display: inline-block;
-  text-align: center; /* Centrer le texte */
-  width: 100%; /* S'assurer qu'il occupe toute la largeur */
-  margin-left: 0;
-  margin-right: 0; /* Supprimer les marges latérales */
+  text-transform: uppercase;
 }
 
 .experience-section h2::after {
@@ -590,12 +592,113 @@ section {
   position: absolute;
   bottom: -10px;
   left: 50%;
-  transform: translateX(-50%); /* Centrer la ligne sous le titre */
-  width: 50px;
+  transform: translateX(-50%);
+  width: 60px;
   height: 4px;
-  background-color: var(--primary);
+  background-color: var(--primary); /* Le même style de couleur */
   border-radius: 10px;
 }
+
+/* Conteneur de la timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+}
+
+/* Flèches dans la timeline */
+.timeline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(180deg, #007bff, #00c1ff); /* La ligne entre les événements */
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
+/* Item de la timeline */
+.timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.timeline-item:hover {
+  transform: translateY(-10px);
+}
+
+/* Ajout de la flèche au-dessus des éléments */
+.timeline-item:before {
+  content: '↓';
+  position: absolute;
+  top: -15px;
+  font-size: 20px;
+  color: var(--primary);
+}
+
+/* Points marquants */
+.timeline-item .company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 50%; /* Des logos ronds pour ajouter un effet visuel */
+}
+
+/* Texte du titre et des dates */
+.timeline-item h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.timeline-item .dates {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.timeline-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Effet de survol et animation */
+.timeline-item:hover .timeline-content {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline {
+    flex-direction: column;
+  }
+
+  .timeline-item {
+    width: 100%;
+  }
+
+  .timeline-item .company-logo {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 
 .filter-btns {
   display: flex;
