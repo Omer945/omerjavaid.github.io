@@ -774,6 +774,77 @@ section {
     grid-template-columns: 1fr;
   }
 }
+.experience-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.experience-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+}
+
+.experience-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.experience-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card img.company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.experience-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.experience-card .dates {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.experience-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.experience-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .experience-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-cards {
+    grid-template-columns: 1fr;
+  }
+}
 
   </style>
 </head>
@@ -947,60 +1018,48 @@ section {
 
   <!-- ======= EXPÉRIENCES ======= -->
  <section id="experiences" class="experience-section" data-aos="fade-up">
-    <h2>Expériences Professionnelles</h2>
-    <div class="timeline">
-      <div class="t-item" data-aos="fade-right">
-        <div class="bubble">
-          <img src="assets/companies/sofiadis.png" alt="Sofiadis" loading="lazy">
-          <h3>Pentest Web – Sofiadis</h3>
-          <p class="dates">Avril 2025 – Juin 2025</p>
-          <ul>
-            <li>Analyse + de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest (Nikto, SQLMap, WhatWeb, FFUF, Dirsearch, Curl).</li>
-            <li>Rédaction d’un rapport de 20 pages présentant + de 30 vulnérabilités techniques identifiées et leurs recommandations.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="t-item" data-aos="fade-left">
-        <div class="bubble">
-          <img src="assets/companies/basicfit.png" alt="Basic Fit" loading="lazy">
-          <h3>Réceptionniste – Basic Fit</h3>
-          <p class="dates">Juin 2024 – Juil. 2024</p>
-          <ul><li>Accueil &amp; accompagnement adhérents</li><li>Gestion réclamations &amp; sécurité</li></ul>
-        </div>
-      </div>
-
-      <div class="t-item" data-aos="fade-right">
-        <div class="bubble">
-          <img src="assets/companies/mairie_champigny.png" alt="Mairie" loading="lazy">
-          <h3>ENGAGEMENT CITOYEN SERVICE CIVIQUE – Mairie de Champigny</h3>
-          <p class="dates">Sept. 2023 – Fév. 2023</p>
-          <ul>
-            <li>Accompagnement hebdomadaire de 10 à 15 lycéens en SNT et NSI</li>
-            <li>+60 séances dispensées sur 2 ans pour renforcer les bases en informatique et mathématiques</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="t-item" data-aos="fade-left">
-        <div class="bubble">
-          <img src="assets/companies/simon_veil.png" alt="Centre loisirs" loading="lazy">
-          <h3>Animateur – Centre de loisirs</h3>
-          <p class="dates">Juil. 2022 – Août 2022</p>
-          <ul><li>Encadrement enfants 6-12 ans</li><li>Gestion de la sécurité, de la cohésion de groupe et du respect des règles</li></ul>
-        </div>
-      </div>
-
-      <div class="t-item" data-aos="fade-right">
-        <div class="bubble">
-          <img src="assets/companies/inventive.png" alt="Inventive" loading="lazy">
-          <h3>Stagiaire IT – Inventive Informatique</h3>
-          <p class="dates">Déc. 2020 – Janv. 2021</p>
-          <ul><li>Installation postes &amp; réseau</li></ul>
-        </div>
-      </div>
+  <h2>Expériences Professionnelles</h2>
+  <div class="experience-cards">
+    <div class="experience-card">
+      <img src="assets/companies/sofiadis.png" alt="Sofiadis" class="company-logo">
+      <h3>Pentest Web – Sofiadis</h3>
+      <p class="dates">Avril 2025 – Juin 2025</p>
+      <p>
+        Analyse de plus de 10 000 requêtes HTTP et de plus de 15 points d’entrée fonctionnels avec 6 outils de pentest (Nikto, SQLMap, WhatWeb, FFUF, Dirsearch, Curl).
+      </p>
+      <p>Rédaction d’un rapport de 20 pages présentant plus de 30 vulnérabilités techniques identifiées et leurs recommandations.</p>
     </div>
-  </section>
+
+    <div class="experience-card">
+      <img src="assets/companies/basicfit.png" alt="Basic Fit" class="company-logo">
+      <h3>Réceptionniste – Basic Fit</h3>
+      <p class="dates">Juin 2024 – Juil. 2024</p>
+      <p>Accueil et accompagnement des adhérents. Gestion des réclamations et de la sécurité dans le centre.</p>
+    </div>
+
+    <div class="experience-card">
+      <img src="assets/companies/mairie_champigny.png" alt="Mairie de Champigny" class="company-logo">
+      <h3>ENGAGEMENT CITOYEN SERVICE CIVIQUE – Mairie de Champigny</h3>
+      <p class="dates">Sept. 2023 – Fév. 2023</p>
+      <p>Accompagnement hebdomadaire de 10 à 15 lycéens en SNT et NSI. Formation de plus de 60 séances dispensées sur 2 ans pour renforcer les bases en informatique et mathématiques.</p>
+    </div>
+
+    <div class="experience-card">
+      <img src="assets/companies/simon_veil.png" alt="Simone Veil" class="company-logo">
+      <h3>Animateur – Centre de loisirs</h3>
+      <p class="dates">Juil. 2022 – Août 2022</p>
+      <p>Encadrement d'enfants âgés de 6 à 12 ans. Gestion de la sécurité, de la cohésion de groupe et du respect des règles.</p>
+    </div>
+
+    <div class="experience-card">
+      <img src="assets/companies/inventive.png" alt="Inventive Informatique" class="company-logo">
+      <h3>Stagiaire IT – Inventive Informatique</h3>
+      <p class="dates">Déc. 2020 – Janv. 2021</p>
+      <p>Installation de postes et réseaux pour l'entreprise. Participation à l'amélioration des infrastructures IT.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- ======= CONTACT ======= -->
   <section id="contact" class="contact-section" data-aos="fade-up">
