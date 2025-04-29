@@ -196,11 +196,17 @@ body.dark .typed-cursor {
 }
 
 /* ====== PROFILE ====== */
-.profile-section {
-  padding: 4rem 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.profile-section{
+  /* on bascule la section en colonne pour empiler proprement
+     le titre (h2) puis la carte                          */
+  display:flex;
+  flex-direction:column;
+  align-items:center;      /* centrage horizontal          */
+  justify-content:center;  /* centrage vertical local      */
+  padding:6rem 2rem 4rem;  /* un peu plus d’air au sommet  */
+  background:#f4f4f4;
+  overflow:hidden;         /* cache les artefacts venant
+                              de la timeline Formation     */
 }
 
 .profile-container {
@@ -332,6 +338,9 @@ section {
   .edu-block {
     width: 100%;
   }
+@media (max-width:768px){
+  .profile-card{flex-direction:column;text-align:center;}
+}
 
   .cert-block {
     flex: 1 1 100%;
@@ -1334,45 +1343,57 @@ body.dark .contact-form textarea {
   text-align: center;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  text-align: center;
-  color: var(--primary);
-  font-weight: 700;
-  margin-bottom: 3rem;
-  position: relative;
-  text-transform: uppercase;
+.section-title,
+.experience-section h2,
+.certifications-section h2,
+.contact-section     h2{
+  position:relative;
+  text-align:center;       /* vrai centrage du texte       */
+  font-size:2.5rem;
+  color:var(--primary);
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:3rem;
 }
 
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary);
-  border-radius: 10px;
+.section-title::after,
+#formation   h2::after,
+#langues     h2::after,
+.experience-section h2::after,
+.certifications-section h2::after,
+.contact-section     h2::after{
+  content:"";
+  position:absolute;
+  bottom:-12px;
+  left:50%;
+  transform:translateX(-50%); /* soulignement centré       */
+  width:60px;
+  height:4px;
+  background:var(--primary);
+  border-radius:10px;
 }
 
-.profile-card {
-  background: #fff;
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center; /* ✅ Centrage horizontal du contenu */
-  gap: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+.profile-card{
+  max-width:850px;
+  margin:0 auto;              /* centrage de la carte     */
+  padding:2.5rem 3rem;
+  gap:2.5rem;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+  transition:transform .3s ease;
 }
 
-.profile-card:hover {
-  transform: translateY(-5px);
+.profile-card:hover{transform:translateY(-5px);}
+
+/* ------------------------
+   4.  Petite fuite de la
+       ligne verticale de la
+       timeline Formation
+   ----------------------*/
+.edu-timeline::before{
+  top:25px;     /* on descend l’origine → plus de trait
+                   qui remonte dans À PROPOS             */
 }
 
 
