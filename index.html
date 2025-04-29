@@ -1074,6 +1074,7 @@ document.addEventListener('DOMContentLoaded', () => {
     delay: 200
   });
 });
+// Script pour le filtrage des compétences
 document.addEventListener("DOMContentLoaded", function () {
   const filterButtons = document.querySelectorAll(".filter-btns button");
   const skillBlocks = document.querySelectorAll(".skill-block");
@@ -1086,14 +1087,24 @@ document.addEventListener("DOMContentLoaded", function () {
       filterButtons.forEach(btn => btn.classList.remove("active"));
       this.classList.add("active");
 
-      // Affichage des compétences selon le filtre
+      // Cacher tous les blocs de compétence avant d'afficher ceux du filtre
       skillBlocks.forEach(block => {
-        if (filter === "all" || block.classList.contains(filter)) {
-          block.classList.add("visible");
-        } else {
-          block.classList.remove("visible");
-        }
+        block.classList.remove("visible");
       });
+
+      // Affichage des compétences selon le filtre
+      if (filter === "all") {
+        // Si le filtre "all" est sélectionné, on affiche tous les blocs
+        skillBlocks.forEach(block => {
+          block.classList.add("visible");
+        });
+      } else {
+        // Si un filtre spécifique est sélectionné, on affiche uniquement les blocs correspondants
+        const filteredBlocks = document.querySelectorAll(`.skill-block.${filter}`);
+        filteredBlocks.forEach(block => {
+          block.classList.add("visible");
+        });
+      }
     });
   });
 
