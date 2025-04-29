@@ -237,18 +237,65 @@ h2 {
 }
 
 .edu-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
- .btn-project {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .edu-block {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .edu-block h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .edu-logo {
+    width: 40px;
+    height: auto;
+  }
+
+  /* Pour les projets */
+  .projects {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+
+  .projects h4 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+  }
+
+  .project-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .btn-project {
     display: inline-block;
-    background-color: #007BFF; /* Couleur bleue */
+    background-color: #007BFF;
     color: white;
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: 14px;
+    padding: 8px 16px;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.3s;
@@ -257,10 +304,11 @@ h2 {
   }
 
   .btn-project:hover {
-    background-color: #0056b3; /* Couleur bleue plus foncée au survol */
-    transform: translateY(-5px); /* Léger mouvement vers le haut */
+    background-color: #0056b3;
+    transform: translateY(-3px);
   }
 
+  /* Effect for button with ripple effect */
   .btn-project::before {
     content: '';
     position: absolute;
@@ -281,25 +329,16 @@ h2 {
     left: 50%;
   }
 
-  .btn-project:active {
-    transform: translateY(0); /* Animation active pour un effet pression */
+  /* Responsive for mobile screens */
+  @media (max-width: 768px) {
+    .edu-block {
+      width: 100%;
+    }
+
+    .projects {
+      margin-top: 20px;
+    }
   }
-.edu-block {
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px var(--shadow-color);
-}
-
-body.dark .edu-block {
-  background: #1e1e1e;
-  color: var(--dark-text);
-}
-
-.edu-block h3 {
-  color: var(--primary);
-}
-
 .edu-block .dates {
   font-style: italic;
   font-size: 0.9rem;
