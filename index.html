@@ -816,9 +816,15 @@ section {
 }
 
 .timeline-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
   position: relative;
 }
 
@@ -833,8 +839,56 @@ section {
   transition: transform 0.3s ease;
 }
 
-.timeline-item:hover .timeline-content {
+.timeline-item:hover {
   transform: translateY(-10px);
+}
+
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 5px;
+  background: var(--primary);  /* Le même primaire pour le style */
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
+/* Ajout des badges */
+.timeline-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.timeline-item .badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Modification de la ligne pour qu'elle soit plus épaisse et stylisée */
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 5px;
+  background: linear-gradient(180deg, #007bff, #00c1ff);
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
+/* Animation au survol */
+.timeline-item:hover .timeline-content {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 
 .company-logo {
