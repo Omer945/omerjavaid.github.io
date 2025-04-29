@@ -496,6 +496,72 @@ section {
     width: 100%;
   }
 }
+/* ====== LANGUES ====== */
+#langues {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f4f4f4;
+  position: relative;
+}
+
+#langues h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+#langues h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.lang-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.lang-tag {
+  background-color: var(--card-bg);
+  color: var(--text);
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.lang-tag:hover {
+  background-color: var(--primary);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.lang-tag:active {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .lang-tag {
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
 
 
   </style>
@@ -590,13 +656,16 @@ section {
 
   <!-- ======= LANGUES ======= -->
   <section id="langues" data-aos="fade-up">
-    <h2>Langues</h2>
-    <div class="lang-list">
-      <span class="lang-tag">Français – C2</span><span class="lang-tag">Anglais – B2</span>
-      <span class="lang-tag">Urdu – C2</span><span class="lang-tag">Espagnol – A2</span>
-      <span class="lang-tag">Hindi – A2</span>
-    </div>
-  </section>
+  <h2>Langues</h2>
+  <div class="lang-list">
+    <span class="lang-tag">Français – C2</span>
+    <span class="lang-tag">Anglais – B2</span>
+    <span class="lang-tag">Urdu – C2</span>
+    <span class="lang-tag">Espagnol – A2</span>
+    <span class="lang-tag">Hindi – A2</span>
+  </div>
+</section>
+
 
   <!-- ======= COMPÉTENCES ======= -->
   <!-- ======= COMPÉTENCES ======= -->
