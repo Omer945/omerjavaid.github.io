@@ -776,162 +776,86 @@ section {
 }
 .experience-section {
   padding: 4rem 2rem;
-  background-color: #f9f9f9;
-  text-align: center;
+  background-color: #f4f4f4;
 }
 
 .experience-section h2 {
   font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 2rem;
-}
-
-.experience-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-}
-
-.experience-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 350px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.experience-card img.company-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-}
-
-.experience-card h3 {
-  font-size: 1.5rem;
   color: #333;
-  margin-bottom: 0.8rem;
-}
-
-.experience-card .dates {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 1rem;
-}
-
-.experience-card p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-.experience-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .experience-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .experience-cards {
-    grid-template-columns: 1fr;
-  }
-}
-.experience-section {
-  padding: 4rem 2rem;
-  background-color: #f9f9f9;
-}
-
-.experience-section h2 {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 2rem;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .timeline {
-  position: relative;
-  padding-left: 40px;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 40px;
-  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.timeline-dot {
-  position: absolute;
-  left: -20px;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: var(--primary);
-}
-
-.timeline-card {
+.timeline-content {
   background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: 100%;
-  max-width: 350px;
+  padding: 25px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
-.timeline-card img.company-logo {
+.timeline-item:hover .timeline-content {
+  transform: translateY(-10px);
+}
+
+.company-logo {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
 }
 
-.timeline-card h3 {
+h3 {
   font-size: 1.5rem;
   color: #333;
-  margin-bottom: 0.8rem;
+  margin-bottom: 10px;
 }
 
-.timeline-card .dates {
+.dates {
   font-size: 1rem;
   color: #777;
   margin-bottom: 1rem;
 }
 
-.timeline-card p {
+.timeline-content p {
   font-size: 1rem;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-.timeline-item:hover .timeline-card {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 3px;
+  background-color: var(--primary);
+  z-index: -1;
+  transform: translateX(-50%);
 }
 
 @media (max-width: 768px) {
   .timeline {
-    padding-left: 20px;
+    flex-direction: column;
   }
-  
   .timeline-item {
-    margin-left: 0;
-    padding-left: 20px;
-  }
-
-  .timeline-card {
-    max-width: 100%;
+    align-items: flex-start;
   }
 }
 
@@ -1106,12 +1030,11 @@ section {
   </section>
 
   <!-- ======= EXPÉRIENCES ======= -->
- <section id="experiences" class="experience-section" data-aos="fade-up">
+ <section id="experiences" class="experience-section">
   <h2>Expériences Professionnelles</h2>
   <div class="timeline">
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
+      <div class="timeline-content">
         <img src="assets/companies/sofiadis.png" alt="Sofiadis" class="company-logo">
         <h3>Pentest Web – Sofiadis</h3>
         <p class="dates">Avril 2025 – Juin 2025</p>
@@ -1121,8 +1044,7 @@ section {
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
+      <div class="timeline-content">
         <img src="assets/companies/basicfit.png" alt="Basic Fit" class="company-logo">
         <h3>Réceptionniste – Basic Fit</h3>
         <p class="dates">Juin 2024 – Juil. 2024</p>
@@ -1131,8 +1053,7 @@ section {
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
+      <div class="timeline-content">
         <img src="assets/companies/mairie_champigny.png" alt="Mairie de Champigny" class="company-logo">
         <h3>ENGAGEMENT CITOYEN SERVICE CIVIQUE – Mairie de Champigny</h3>
         <p class="dates">Sept. 2023 – Fév. 2023</p>
@@ -1141,8 +1062,7 @@ section {
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
+      <div class="timeline-content">
         <img src="assets/companies/simon_veil.png" alt="Simone Veil" class="company-logo">
         <h3>Animateur – Centre de loisirs</h3>
         <p class="dates">Juil. 2022 – Août 2022</p>
@@ -1151,8 +1071,7 @@ section {
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
+      <div class="timeline-content">
         <img src="assets/companies/inventive.png" alt="Inventive Informatique" class="company-logo">
         <h3>Stagiaire IT – Inventive Informatique</h3>
         <p class="dates">Déc. 2020 – Janv. 2021</p>
@@ -1161,6 +1080,7 @@ section {
     </div>
   </div>
 </section>
+
 
 
 
