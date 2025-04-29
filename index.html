@@ -671,6 +671,21 @@ section {
     width: 100%;
   }
 }
+/* Ajoutez cette classe pour une transition fluide */
+.skill-block.fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
   </style>
@@ -1045,6 +1060,32 @@ document.addEventListener('DOMContentLoaded', () => {
     delay: 200
   });
 });
+// Script pour le filtrage des compétences
+document.addEventListener("DOMContentLoaded", function () {
+  const filterButtons = document.querySelectorAll(".filter-btns button");
+  const skillBlocks = document.querySelectorAll(".skill-block");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      const filter = this.getAttribute("data-filter");
+
+      // Ajout de la classe 'active' au bouton cliqué
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      // Affichage des compétences selon le filtre
+      skillBlocks.forEach(block => {
+        if (filter === "all" || block.classList.contains(filter)) {
+          block.style.display = "block";
+          block.classList.add("fadeIn");
+        } else {
+          block.style.display = "none";
+        }
+      });
+    });
+  });
+});
+
 
 </script>
 
