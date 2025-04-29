@@ -1044,6 +1044,129 @@ h3 {
     align-items: flex-start;
   }
 }
+#formation h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  position: relative;
+}
+
+#formation h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  position: relative;
+}
+
+.edu-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.edu-item .edu-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edu-item .edu-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.edu-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.edu-item.current .edu-content {
+  background: #f2f9ff; /* Highlight the current education with a soft blue */
+}
+
+.edu-item.past .edu-content {
+  background: #f8f8f8; /* Grey color for past events */
+}
+
+.edu-item .subtitle {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.edu-item .dates {
+  color: #777;
+}
+
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 3px;
+  background: var(--primary);
+  transform: translateX(-50%);
+}
+
+.edu-item.current::before {
+  background: #2196F3;  /* Blue for current education */
+}
+
+.edu-item.past::before {
+  background: #999;  /* Grey for past education */
+}
+
+.edu-item.future::before {
+  background: #4CAF50;  /* Green for future education */
+}
+
+.edu-item::after {
+  content: '→'; /* Arrow symbol for transition */
+  font-size: 2rem;
+  color: var(--primary);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .edu-timeline {
+    padding-left: 0;
+  }
+
+  .edu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .edu-item::after {
+    right: auto;
+    left: -20px;
+  }
+}
+
 
   </style>
 </head>
@@ -1102,38 +1225,57 @@ h3 {
 
   <!-- ======= FORMATION + MAP ======= -->
   <section id="formation" data-aos="fade-up">
-    <h2>Formation &amp; Lieux clés</h2>
-    <div class="edu-container">
-      <div class="edu-block" data-aos="fade-right">
-        <h3>ESIEA – École d’ingénieurs du numérique <small>– Paris, France</small></h3>
-        <p class="subtitle">Cycle ingénieur – CTI</p>
-        <p class="dates">Septembre 2025 – Juillet 2028</p>
-        <p>Consolidation avancée des compétences en informatique (systèmes, réseaux, développement) en vue d’une spécialisation en cybersécurité dès la 4ᵉ année.</p>
+  <h2>Formation</h2>
+  <div class="edu-timeline">
+    <!-- Formations passées (Lycée et IUT) -->
+    <div class="edu-item past" data-aos="fade-right">
+      <div class="edu-icon">
+        <img src="assets/schools/lycee.png" alt="Lycée Langevin Wallon Logo" />
       </div>
+      <div class="edu-content">
+        <h3>Lycée Langevin Wallon <small>– Champigny-sur-Marne, France</small></h3>
+        <p class="subtitle">Baccalauréat Général – Spécialités Mathématiques, SI et NSI</p>
+        <p class="dates">Septembre 2020 – Juillet 2023</p>
+        <p>Formation axée sur les fondamentaux scientifiques et technologiques : modélisation, algorithmique, programmation Python/Arduino, conception de systèmes mécatroniques.</p>
+      </div>
+    </div>
 
-      <div class="edu-block" data-aos="fade-left">
+    <!-- Formations passées (IUT) -->
+    <div class="edu-item past" data-aos="fade-left">
+      <div class="edu-icon">
+        <img src="assets/schools/iut.png" alt="IUT Créteil Logo" />
+      </div>
+      <div class="edu-content">
         <h3>UPEC, IUT Créteil-Vitry</h3>
         <p class="subtitle"><em>BUT Réseaux & Télécommunications (Spécialisation Cybersécurité)</em></p>
         <p class="dates">Septembre 2023 – Juillet 2026</p>
         <div class="courses">
           <h4>Cours principaux</h4>
           <ul>
-            <li>Réseaux avancés, Principes de cybersécurité, Architecture réseau</li>
+            <li>Réseaux avancés, Cybersécurité, Architecture réseau</li>
             <li>Cloud Computing, Gestion de bases de données (SQL/NoSQL), Scripts Shell</li>
             <li>Développement Web (HTML, CSS, JS, PHP), Full-Stack (PHP, Python)</li>
             <li>Télécommunications et transmission de signaux</li>
           </ul>
         </div>
       </div>
+    </div>
 
-      <div class="edu-block" data-aos="fade-right">
-        <h3>Lycée Langevin Wallon <small>– Champigny-sur-Marne, France</small></h3>
-        <p class="subtitle">Baccalauréat Général – Spécialités Mathématiques, Sciences de l’Ingénieur (SI) et Numérique & Sciences Informatiques (NSI)</p>
-        <p class="dates">Septembre 2020 – Juillet 2023</p>
-        <p>Formation axée sur les fondamentaux scientifiques et technologiques : modélisation, algorithmique, programmation Python/Arduino, conception de systèmes mécatroniques.</p>
+    <!-- Formation en cours (ESIEA) -->
+    <div class="edu-item current" data-aos="fade-right">
+      <div class="edu-icon">
+        <img src="assets/schools/esiea.png" alt="ESIEA Logo" />
+      </div>
+      <div class="edu-content">
+        <h3>ESIEA – École d’ingénieurs du numérique <small>– Paris, France</small></h3>
+        <p class="subtitle">Cycle ingénieur – CTI</p>
+        <p class="dates">Septembre 2025 – Juillet 2028</p>
+        <p>Consolidation avancée des compétences en informatique (systèmes, réseaux, développement) en vue d’une spécialisation en cybersécurité dès la 4ᵉ année.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ======= LANGUES ======= -->
   <section id="langues" data-aos="fade-up">
